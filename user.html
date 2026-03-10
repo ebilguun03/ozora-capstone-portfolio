@@ -7,22 +7,80 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <header class="site-header">
+        <nav class="top-nav" aria-label="Primary">
+            <a class="brand" href="index.html">
+                <span class="brand-kicker">UW Bothell CSS Capstone</span>
+                <span class="brand-title">Ozora Smart Dining Platform</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="user.html" aria-current="page">The User</a></li>
+                <li><a href="experience.html">Capstone Experience</a></li>
+                <li><a href="bibliography.html">Annotated Bibliography</a></li>
+                <li><a href="reflection.html">Overall Capstone Reflection</a></li>
+            </ul>
+        </nav>
+    </header>
 
-<nav>
-    <h2>Ozora Smart Dining Platform</h2>
-    <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="user.html" aria-current="page">The User</a></li>
-        <li><a href="experience.html">Capstone Experience</a></li>
-        <li><a href="bibliography.html">Annotated Bibliography</a></li>
-        <li><a href="reflection.html">Overall Capstone Reflection</a></li>
-    </ul>
-</nav>
+    <main class="page-shell">
+        <section class="page-intro surface">
+            <p class="eyebrow">The User</p>
+            <h1>User-centered framing for the Ozora experience</h1>
+            <p class="lead">
+                This section explains what Ozora is, why the platform matters, and how a user moves through the dining
+                experience. The structure is designed to stay readable even as detailed user research and examples are added later.
+            </p>
+        </section>
 
-<section>
-    <h1>The User</h1>
-    <p>This page will present the stakeholder perspective: what Ozora is, why you would use it, and how it works for your dining experience.</p>
-</section>
+        <section class="stack-layout">
+            <article class="surface section-card">
+                <p class="section-label">What It Is</p>
+                <h2>A smart dining platform for a more coordinated restaurant visit</h2>
+                <p>
+                    Ozora is positioned as a digital dining support system that helps customers browse menus, place
+                    orders, and interact with restaurant services through a guided interface. This section can later be
+                    expanded with personas, audience segments, or scenario-based examples.
+                </p>
+            </article>
 
+            <article class="surface section-card">
+                <p class="section-label">Why Use It</p>
+                <h2>Reducing friction in ordering and service communication</h2>
+                <p>
+                    The platform addresses common pain points such as slow ordering, inconsistent communication, and
+                    fragmented service experiences. As the page evolves, this area can hold user needs, evidence,
+                    stakeholder goals, and concise problem statements.
+                </p>
+            </article>
+
+            <article class="surface section-card">
+                <p class="section-label">How It Works</p>
+                <h2>Clear steps from discovery to order completion</h2>
+                <div class="process-grid">
+                    <div class="mini-card">
+                        <span class="step-number">01</span>
+                        <h3>Discover</h3>
+                        <p>Users encounter the platform through the restaurant experience and access the dining workflow.</p>
+                    </div>
+                    <div class="mini-card">
+                        <span class="step-number">02</span>
+                        <h3>Browse</h3>
+                        <p>They review menu information, options, and availability in a structured interface.</p>
+                    </div>
+                    <div class="mini-card">
+                        <span class="step-number">03</span>
+                        <h3>Order</h3>
+                        <p>Users submit selections with fewer steps and clearer feedback during the ordering process.</p>
+                    </div>
+                    <div class="mini-card">
+                        <span class="step-number">04</span>
+                        <h3>Receive</h3>
+                        <p>The platform supports a more predictable service flow and better coordination after checkout.</p>
+                    </div>
+                </div>
+            </article>
+        </section>
+    </main>
 </body>
 </html>
