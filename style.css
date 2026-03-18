@@ -184,32 +184,38 @@ a {
     text-align: center;
 }
 
+.landing-hero-header {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-bottom: 1.3rem;
+}
+
 .landing-logo-wrap {
     display: flex;
     justify-content: center;
-    margin-bottom: 1.35rem;
-    width: clamp(98px, 12vw, 132px);
-    height: clamp(98px, 12vw, 132px);
-    margin-left: auto;
-    margin-right: auto;
-    border-radius: 50%;
-    overflow: hidden;
+    align-items: center;
+    width: clamp(132px, 12vw, 156px);
+    height: clamp(132px, 12vw, 156px);
+    border-radius: 34px;
+    background: rgba(255, 255, 255, 0.88);
+    box-shadow: 0 16px 32px rgba(31, 75, 122, 0.1);
 }
 
 .landing-logo-fallback {
-    width: clamp(98px, 12vw, 132px);
-    height: clamp(98px, 12vw, 132px);
+    width: clamp(132px, 12vw, 156px);
+    height: clamp(132px, 12vw, 156px);
 }
 
 .landing-logo {
-    width: 118%;
-    height: 118%;
-    max-width: none;
-    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
     object-position: center;
-    margin: -9% 0 0 -9%;
     display: block;
     background: transparent;
+    padding: 0.15rem;
 }
 
 .landing-logo-fallback {
@@ -222,6 +228,10 @@ a {
     font-size: clamp(2.4rem, 5vw, 3.4rem);
     font-weight: 800;
     box-shadow: 0 14px 32px rgba(15, 23, 34, 0.12);
+}
+
+.landing-identity {
+    text-align: left;
 }
 
 .landing-hero h1 {
@@ -239,7 +249,17 @@ a {
 }
 
 .landing-kicker {
-    margin-bottom: 0.55rem;
+    margin-bottom: 0.45rem;
+}
+
+.landing-name {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.15rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--primary);
 }
 
 .lead {
@@ -618,6 +638,10 @@ a {
         max-width: 14ch;
         font-size: clamp(3rem, 8vw, 4rem);
     }
+
+    .landing-hero-header {
+        gap: 1.2rem;
+    }
 }
 
 @media (max-width: 760px) {
@@ -664,6 +688,10 @@ a {
 
     .landing-hero {
         padding: 2rem 0;
+    }
+
+    .landing-hero-header {
+        gap: 1rem;
     }
 
 }
@@ -748,6 +776,17 @@ a {
         padding: 1.6rem 0;
     }
 
+    .landing-hero-header {
+        display: flex;
+        flex-direction: column;
+        gap: 0.9rem;
+        margin-bottom: 1rem;
+    }
+
+    .landing-identity {
+        text-align: center;
+    }
+
     .landing-hero h1 {
         font-size: clamp(2.5rem, 11vw, 3.2rem);
         max-width: none;
@@ -759,9 +798,14 @@ a {
 
     .landing-logo,
     .landing-logo-fallback {
-        width: 92px;
-        height: 92px;
-        border-radius: 22px;
+        width: 108px;
+        height: 108px;
+    }
+
+    .landing-logo-wrap {
+        width: 108px;
+        height: 108px;
+        border-radius: 24px;
     }
 
     .home-nav-button {
