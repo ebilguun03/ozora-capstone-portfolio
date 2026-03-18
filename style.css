@@ -263,6 +263,13 @@ a {
     margin-top: 1.4rem;
 }
 
+.home-button-row {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
 .quick-link-card {
     display: block;
     padding: 1.2rem;
@@ -283,7 +290,7 @@ a {
     font-family: Arial, Helvetica, sans-serif;
     font-weight: 700;
     color: var(--heading);
-    margin-bottom: 0.45rem;
+    margin-bottom: 0;
 }
 
 .quick-link-copy {
@@ -291,18 +298,6 @@ a {
     color: var(--muted);
 }
 
-.landing-overview {
-    margin-top: 1.5rem;
-    padding: 1.6rem;
-}
-
-.landing-overview h2 {
-    margin: 0 0 0.65rem;
-    color: var(--heading);
-    font-size: 1.55rem;
-}
-
-.landing-overview > p,
 .theme-summary,
 .group-annotation {
     margin: 0;
@@ -487,6 +482,7 @@ a {
     .content-grid,
     .feature-grid,
     .quick-links,
+    .home-button-row,
     .process-grid,
     .section-heading {
         grid-template-columns: 1fr;
@@ -529,7 +525,6 @@ a {
     .hero,
     .page-intro,
     .section-card,
-    .landing-overview,
     .artifact-section,
     .bibliography-group,
     .reflection-essay {
@@ -609,7 +604,6 @@ a {
     }
 
     .section-card,
-    .landing-overview,
     .artifact-section,
     .bibliography-group,
     .reflection-essay {
