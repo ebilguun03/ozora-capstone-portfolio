@@ -9,28 +9,32 @@
 <body class="page-home">
     <main class="landing-shell">
         <section class="landing-hero surface">
-            <img
-                class="landing-logo"
-                src="images/ozora-logo.jpg"
-                alt="Ozora Smart Dining Platform logo"
-            >
+            <div class="landing-logo-wrap">
+                <img
+                    class="landing-logo"
+                    src="images/ozora-logo.jpg"
+                    alt="Ozora Smart Dining Platform logo"
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';"
+                >
+                <div class="landing-logo-fallback" aria-hidden="true">O</div>
+            </div>
             <p class="eyebrow">UW Bothell CSS Capstone Portfolio</p>
             <h1>Ozora Smart Dining Platform</h1>
             <p class="lead">
-                Ozora Smart Dining Platform is a capstone project focused on improving the restaurant ordering experience
-                through user-centered design, technical development, and iterative revision across the quarter.
+                Ozora Smart Dining Platform presents the capstone from the user, technical, research, and reflective
+                perspectives while documenting how the project developed across the quarter.
             </p>
             <div class="home-button-row">
-                <a class="quick-link-card" href="user.html">
+                <a class="home-nav-button" href="user.html">
                     <span class="quick-link-title">The User</span>
                 </a>
-                <a class="quick-link-card" href="experience.html">
+                <a class="home-nav-button" href="experience.html">
                     <span class="quick-link-title">Capstone Experience</span>
                 </a>
-                <a class="quick-link-card" href="bibliography.html">
+                <a class="home-nav-button" href="bibliography.html">
                     <span class="quick-link-title">Annotated Bibliography</span>
                 </a>
-                <a class="quick-link-card" href="reflection.html">
+                <a class="home-nav-button" href="reflection.html">
                     <span class="quick-link-title">Overall Capstone Reflection</span>
                 </a>
             </div>

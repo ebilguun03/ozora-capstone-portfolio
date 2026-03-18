@@ -40,6 +40,10 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    background:
+        radial-gradient(circle at top left, rgba(194, 214, 237, 0.9), transparent 30%),
+        radial-gradient(circle at bottom right, rgba(217, 231, 246, 0.9), transparent 32%),
+        linear-gradient(180deg, #f7fafd 0%, #edf3f9 100%);
 }
 
 a {
@@ -165,23 +169,47 @@ a {
 }
 
 .landing-shell {
-    width: min(calc(100% - 2rem), 960px);
+    width: min(calc(100% - 2rem), 1120px);
     padding: 2rem 0;
 }
 
 .landing-hero {
-    padding: clamp(2rem, 5vw, 4rem);
+    padding: clamp(2.4rem, 5vw, 4.5rem);
     text-align: center;
+    background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(247, 250, 253, 0.95));
+    box-shadow: 0 24px 60px rgba(31, 75, 122, 0.12);
+}
+
+.landing-logo-wrap {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1.4rem;
+}
+
+.landing-logo,
+.landing-logo-fallback {
+    width: clamp(98px, 12vw, 132px);
+    height: clamp(98px, 12vw, 132px);
 }
 
 .landing-logo {
-    width: clamp(92px, 12vw, 128px);
-    height: clamp(92px, 12vw, 128px);
     object-fit: cover;
     border-radius: 28px;
-    margin: 0 auto 1.4rem;
     display: block;
     background: linear-gradient(180deg, #e8eff7, #d7e3f1);
+    box-shadow: 0 14px 32px rgba(15, 23, 34, 0.12);
+}
+
+.landing-logo-fallback {
+    display: none;
+    place-items: center;
+    border-radius: 28px;
+    background: linear-gradient(135deg, #1f4b7a, #436d9b);
+    color: #ffffff;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: clamp(2.4rem, 5vw, 3.4rem);
+    font-weight: 800;
     box-shadow: 0 14px 32px rgba(15, 23, 34, 0.12);
 }
 
@@ -190,12 +218,13 @@ a {
     color: var(--heading);
     font-size: clamp(2.6rem, 6vw, 4.8rem);
     line-height: 1.04;
-    max-width: 12ch;
+    max-width: 11ch;
 }
 
 .landing-hero .lead {
     margin: 0 auto;
-    max-width: 60ch;
+    max-width: 52ch;
+    font-size: 1.14rem;
 }
 
 .lead {
@@ -306,8 +335,39 @@ a {
 .home-button-row {
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 1rem;
-    margin-top: 2rem;
+    gap: 1.1rem;
+    margin-top: 2.25rem;
+}
+
+.home-nav-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 92px;
+    padding: 1.15rem 1rem;
+    border-radius: 20px;
+    background: linear-gradient(180deg, #f6f9fc, #edf3f8);
+    box-shadow:
+        inset 0 0 0 1px rgba(31, 75, 122, 0.12),
+        0 14px 28px rgba(31, 75, 122, 0.08);
+    text-decoration: none;
+    text-align: center;
+    transition: transform 180ms ease, box-shadow 180ms ease, background-color 180ms ease;
+}
+
+.home-nav-button:hover,
+.home-nav-button:focus-visible {
+    transform: translateY(-3px);
+    box-shadow:
+        inset 0 0 0 1px rgba(31, 75, 122, 0.2),
+        0 18px 34px rgba(31, 75, 122, 0.12);
+    background: linear-gradient(180deg, #f9fbfd, #e7eff7);
+}
+
+.home-nav-button .quick-link-title {
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.35;
 }
 
 .quick-link-card {
@@ -586,7 +646,7 @@ a {
     }
 
     .landing-hero {
-        padding: 1.6rem 1.25rem;
+        padding: 2rem 1.4rem;
     }
 }
 
@@ -674,6 +734,23 @@ a {
     .landing-hero h1 {
         font-size: clamp(2.2rem, 11vw, 3rem);
         max-width: none;
+    }
+
+    .landing-hero .lead {
+        font-size: 1rem;
+    }
+
+    .landing-logo,
+    .landing-logo-fallback {
+        width: 92px;
+        height: 92px;
+        border-radius: 22px;
+    }
+
+    .home-nav-button {
+        min-height: 78px;
+        padding: 1rem 0.9rem;
+        border-radius: 16px;
     }
 
     .lead {
