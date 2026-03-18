@@ -26,93 +26,144 @@
     <main class="page-shell">
         <section class="page-intro surface">
             <p class="eyebrow">Capstone Experience</p>
-            <h1>Technical development, artifacts, and iteration history</h1>
+            <h1>Artifacts showing how the system changed over the quarter</h1>
             <p class="lead">
-                This page is structured as a reusable technical narrative. Each block can be expanded with screenshots,
-                diagrams, captions, implementation notes, and evidence from the project lifecycle.
+                This page presents the capstone from the developer perspective. Each theme names a major architectural
+                part of the system and pairs artifact annotations with evidence of how the work was first imagined, then
+                revised as the project became more concrete.
             </p>
         </section>
 
-        <section class="feature-grid">
-            <article class="surface section-card">
-                <p class="section-label">Architecture</p>
-                <h2>System structure and core technical decisions</h2>
-                <p>
-                    Reserve this section for the high-level system design, major components, data flow, and explanation
-                    of why the platform architecture was chosen.
+        <section class="artifact-sections">
+            <article class="surface artifact-section">
+                <h2>Architecture</h2>
+                <p class="theme-summary">
+                    The architecture theme explains how the platform moved from an early concept model into a system with
+                    clearer responsibilities between interface, service logic, and data handling.
                 </p>
-                <div class="artifact-placeholder">Architecture diagram or deployment overview can be inserted here.</div>
+
+                <div class="artifact-entry">
+                    <h3>Early system concept</h3>
+                    <p>
+                        This artifact establishes the first high-level model of the application. It is useful because it
+                        shows the original assumptions about the relationship between the customer interface, restaurant
+                        workflow, and supporting backend services.
+                    </p>
+                    <div class="artifact-placeholder">Insert the original architecture diagram here.</div>
+                </div>
+
+                <div class="artifact-entry">
+                    <h3>Revised architecture</h3>
+                    <p>
+                        This artifact shows how the system had to be reorganized once the project scope became more
+                        precise. The revision can highlight any change in boundaries, responsibilities, or service flow
+                        that made the implementation more realistic.
+                    </p>
+                    <div class="artifact-placeholder">Insert the updated architecture diagram here.</div>
+                </div>
             </article>
 
-            <article class="surface section-card">
-                <p class="section-label">Backend</p>
-                <h2>API design, data handling, and platform logic</h2>
-                <p>
-                    Use this area to document backend patterns, route design, data storage decisions, validation, and
-                    any implementation tradeoffs encountered during development.
+            <article class="surface artifact-section">
+                <h2>User Interface</h2>
+                <p class="theme-summary">
+                    The user interface theme documents how menu browsing, ordering, and status feedback evolved from
+                    early layout ideas into a more coherent interaction flow.
                 </p>
-                <div class="artifact-placeholder">Code snippet, endpoint summary, or schema artifact.</div>
+
+                <div class="artifact-entry">
+                    <h3>Initial interface sketches or wireframes</h3>
+                    <p>
+                        This artifact captures the first pass at navigation, screen hierarchy, and user actions. It
+                        helps explain what information seemed important at the start of the quarter and what still needed refinement.
+                    </p>
+                    <div class="artifact-placeholder">Insert early wireframes or initial UI screenshots here.</div>
+                </div>
+
+                <div class="artifact-entry">
+                    <h3>Later interface revision</h3>
+                    <p>
+                        This artifact shows the state of the interface after feedback, iteration, or implementation
+                        constraints changed the design. The comparison is meant to make the project’s UI growth visible.
+                    </p>
+                    <div class="artifact-placeholder">Insert revised interface screenshots here.</div>
+                </div>
             </article>
 
-            <article class="surface section-card">
-                <p class="section-label">UI/UX Evolution</p>
-                <h2>How the interface changed through feedback</h2>
-                <p>
-                    This section can compare early concepts to later screens, showing how usability, clarity, and flow
-                    improved over time.
+            <article class="surface artifact-section">
+                <h2>Database</h2>
+                <p class="theme-summary">
+                    The database theme shows how data entities and relationships were organized to support ordering,
+                    menus, and operational needs in the platform.
                 </p>
-                <div class="artifact-placeholder">Screenshot comparisons, wireframes, or usability notes.</div>
+
+                <div class="artifact-entry">
+                    <h3>Original data model</h3>
+                    <p>
+                        This artifact provides the first database or domain representation. It is important because it
+                        captures how the project initially understood the information needed to support the application.
+                    </p>
+                    <div class="artifact-placeholder">Insert the original database or UML diagram here.</div>
+                </div>
+
+                <div class="artifact-entry">
+                    <h3>Updated schema or domain revision</h3>
+                    <p>
+                        This artifact records where the data model changed in response to implementation needs,
+                        additional features, or simplification of the scope. That change helps explain how the system became workable.
+                    </p>
+                    <div class="artifact-placeholder">Insert the updated schema, UML, or data model here.</div>
+                </div>
             </article>
 
-            <article class="surface section-card">
-                <p class="section-label">Integrations</p>
-                <h2>External services, connected systems, and implementation constraints</h2>
-                <p>
-                    Add any third-party tools, integrations, service dependencies, or infrastructure constraints that
-                    shaped the final project scope.
+            <article class="surface artifact-section">
+                <h2>Authentication and Access</h2>
+                <p class="theme-summary">
+                    This theme focuses on how the platform distinguished between user roles, protected access, or managed
+                    sign-in and account flow if those features were part of the implementation.
                 </p>
-                <div class="artifact-placeholder">Integration map or implementation summary.</div>
+
+                <div class="artifact-entry">
+                    <h3>Access design or requirements</h3>
+                    <p>
+                        This artifact can document role definitions, sign-in logic, or security assumptions at the point
+                        where the project was still defining who needed access to which features.
+                    </p>
+                    <div class="artifact-placeholder">Insert authentication flow notes, diagram, or early code here.</div>
+                </div>
+
+                <div class="artifact-entry">
+                    <h3>Implemented or revised access flow</h3>
+                    <p>
+                        This artifact shows how the access model changed once implementation details exposed constraints,
+                        edge cases, or a need to simplify the workflow for the final version.
+                    </p>
+                    <div class="artifact-placeholder">Insert revised authentication artifact here.</div>
+                </div>
             </article>
 
-            <article class="surface section-card">
-                <p class="section-label">Stakeholder Feedback</p>
-                <h2>How project decisions responded to people and context</h2>
-                <p>
-                    Document classroom critique, peer review, instructor feedback, or user input that materially
-                    changed the project direction.
+            <article class="surface artifact-section">
+                <h2>Testing and Feedback</h2>
+                <p class="theme-summary">
+                    The testing and feedback theme captures how evaluation, critique, and iteration affected the final
+                    form of the capstone.
                 </p>
-                <div class="artifact-placeholder">Quotes, synthesis notes, or decision log excerpts.</div>
-            </article>
 
-            <article class="surface section-card">
-                <p class="section-label">Iteration History</p>
-                <h2>Milestones across development phases</h2>
-                <p>
-                    Capture major revisions, blockers, pivots, and technical milestones so the capstone progression is
-                    easy for reviewers to follow.
-                </p>
-                <div class="timeline-list">
-                    <div class="timeline-item">
-                        <span class="timeline-marker"></span>
-                        <div>
-                            <h3>Initial concept</h3>
-                            <p>Problem framing, scope definition, and early project goals.</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <span class="timeline-marker"></span>
-                        <div>
-                            <h3>Prototype and revision</h3>
-                            <p>Interface experimentation, workflow refinement, and feature prioritization.</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <span class="timeline-marker"></span>
-                        <div>
-                            <h3>Implementation and reflection</h3>
-                            <p>Technical execution, evaluation, and lessons carried into future work.</p>
-                        </div>
-                    </div>
+                <div class="artifact-entry">
+                    <h3>Feedback, test plan, or review notes</h3>
+                    <p>
+                        This artifact demonstrates where the project received outside input. It can include test plans,
+                        stakeholder reactions, peer comments, or instructor feedback that revealed issues in the current design.
+                    </p>
+                    <div class="artifact-placeholder">Insert feedback notes, survey results, or testing plan here.</div>
+                </div>
+
+                <div class="artifact-entry">
+                    <h3>Revision after feedback</h3>
+                    <p>
+                        This artifact shows the project after that input changed a design, workflow, or technical
+                        decision. Presenting both moments makes the process of learning and revision visible instead of only showing an endpoint.
+                    </p>
+                    <div class="artifact-placeholder">Insert artifact showing the post-feedback revision here.</div>
                 </div>
             </article>
         </section>
