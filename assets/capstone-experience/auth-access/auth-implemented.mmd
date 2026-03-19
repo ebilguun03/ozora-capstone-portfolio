@@ -1,24 +1,24 @@
 sequenceDiagram
     actor Customer
-    participant Home as HomeView
-    participant Login as LoginView
-    participant API as Auth API
-    participant Auth as AuthService
-    participant Storage as AppStorage
-    participant Tab as LiveTabView
-    participant Socket as Session room
-    participant Admin as Admin dashboard
+    participant Home
+    participant Login
+    participant API
+    participant Auth
+    participant Storage
+    participant Tab
+    participant Room
+    participant Admin
 
     Customer->>Home: Tap Sign In
     Home->>Login: Present sheet
     Customer->>Login: Submit email + OTP
-    Login->>API: POST /api/auth/login
+    Login->>API: Send login request
     API-->>Login: user + mock token
     Login->>Auth: set currentUser + isAuthenticated
     Auth->>Storage: persist token and user fields
     Auth-->>Home: authenticated state
     Customer->>Tab: Open Live Tab
-    Tab->>API: POST /api/session/start
-    Tab->>Socket: subscribe to session_[id]
+    Tab->>API: Start session
+    Tab->>Room: Subscribe to session room
     Admin->>API: Separate unauthenticated proxy requests
-    Note over API,Admin: Prototype boundary. Customer auth is mocked and admin access stays on a separate server surface.
+    Note over API,Admin: Customer auth is mocked. Admin access stays on a separate server surface.

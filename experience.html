@@ -142,58 +142,27 @@ flowchart LR
             </div>
             <pre class="mermaid">
 flowchart LR
-    subgraph client["Customer Experience"]
-        ios["SwiftUI iOS app\nHome | Live Tab | Loyalty | Promotions | History"]
-        auth["AuthService + AppStorage"]
-        tabvm["TabViewModel"]
-    end
-
-    subgraph admin["Restaurant Operations"]
-        dash["Admin dashboard\nHTML / CSS / JS"]
-        proxy["Admin proxy API\nadmin/api/admin.js"]
-    end
-
-    subgraph backend["Backend Platform"]
-        express["Express routes\n/auth /session /tab /webhook /loyalty /promotions /history"]
-        socket["Socket.io rooms\nsession_[id] / user_[id]"]
-        data["dataService.js"]
-        ws["websocketService.js"]
-    end
-
-    subgraph simulation["Demo + Validation Scripts"]
-        simOrder["simulateOrder.js"]
-        simCheckout["simulateCheckout.js"]
-        reset["resetDemoFlow.js"]
-    end
-
-    subgraph storage["File-backed Data"]
-        users["users.json"]
-        sessions["sessions.json"]
-        tabs["tabs.json"]
-        loyalty["loyalty.json"]
-        promos["promotions.json"]
-        history["history.json"]
-        menu["menu.json"]
-    end
+    ios["SwiftUI iOS app"]
+    auth["Auth service"]
+    tabvm["Tab view model"]
+    admin["Admin dashboard"]
+    proxy["Admin proxy"]
+    api["Express API routes"]
+    socket["WebSocket rooms"]
+    data["Data service"]
+    sim["Demo scripts"]
+    store["JSON data files"]
 
     ios --> auth
-    ios -->|"REST via APIService"| express
-    tabvm -->|"subscribe + refresh on tabUpdated"| socket
-    express --> data
-    express --> ws
-    ws --> socket
-    data --> users
-    data --> sessions
-    data --> tabs
-    data --> loyalty
-    data --> promos
-    data --> history
-    data --> menu
-    dash --> proxy
-    proxy -->|"backend requests"| express
-    simOrder -->|"POST /api/webhook/toast"| express
-    simCheckout -->|"close session + write receipt"| storage
-    reset -->|"reset deterministic demo state"| storage
+    ios --> api
+    tabvm --> socket
+    admin --> proxy
+    proxy --> api
+    api --> data
+    api --> socket
+    data --> store
+    sim --> api
+    sim --> store
             </pre>
             <p class="caption">
                 Figure A2. Implemented architecture showing the SwiftUI app, admin dashboard, backend services, simulator scripts, and file-backed data model working together.
@@ -272,29 +241,29 @@ flowchart TD
             <pre class="mermaid">
 sequenceDiagram
     actor Diner
-    participant iOS as SwiftUI iOS app
-    participant API as Express API
-    participant Session as Session route
-    participant POS as POS simulator
-    participant WS as WebSocket room
-    participant Tab as Tab store
-    participant Checkout as Checkout script
-    participant History as Receipt and loyalty data
+    participant App
+    participant API
+    participant Session
+    participant POS
+    participant Room
+    participant Tab
+    participant Checkout
+    participant History
 
-    Diner->>iOS: Sign in
-    iOS->>API: POST /api/auth/login
-    API-->>iOS: Demo user + mock token
-    Diner->>iOS: Open Live Tab
-    iOS->>Session: POST /api/session/start
+    Diner->>App: Sign in
+    App->>API: Login request
+    API-->>App: Demo user and token
+    Diner->>App: Open Live Tab
+    App->>Session: Start session
     Session->>Tab: Create empty tab
-    Session-->>iOS: sessionId
-    iOS->>WS: Subscribe to session_[id]
-    POS->>API: POST /api/webhook/toast with item states
+    Session-->>App: Return session id
+    App->>Room: Subscribe to session room
+    POS->>API: Send staged order update
     API->>Tab: Replace tab items and recalculate totals
-    API->>WS: Emit tabUpdated
-    WS-->>iOS: tabUpdated event
-    iOS->>API: GET /api/tab/:sessionId
-    API-->>iOS: Updated items, status, subtotal, tax, total
+    API->>Room: Emit tab update
+    Room-->>App: Tab updated event
+    App->>API: Fetch latest tab
+    API-->>App: Current tab data
     Checkout->>Tab: Mark tab paid
     Checkout->>History: Write receipt and loyalty points
             </pre>
@@ -578,28 +547,28 @@ flowchart TD
             <pre class="mermaid">
 sequenceDiagram
     actor Customer
-    participant Home as HomeView
-    participant Login as LoginView
-    participant API as Auth API
-    participant Auth as AuthService
-    participant Storage as AppStorage
-    participant Tab as LiveTabView
-    participant Socket as Session room
-    participant Admin as Admin dashboard
+    participant Home
+    participant Login
+    participant API
+    participant Auth
+    participant Storage
+    participant Tab
+    participant Room
+    participant Admin
 
     Customer->>Home: Tap Sign In
     Home->>Login: Present sheet
     Customer->>Login: Submit email + OTP
-    Login->>API: POST /api/auth/login
+    Login->>API: Send login request
     API-->>Login: user + mock token
     Login->>Auth: set currentUser + isAuthenticated
     Auth->>Storage: persist token and user fields
     Auth-->>Home: authenticated state
     Customer->>Tab: Open Live Tab
-    Tab->>API: POST /api/session/start
-    Tab->>Socket: subscribe to session_[id]
+    Tab->>API: Start session
+    Tab->>Room: Subscribe to session room
     Admin->>API: Separate unauthenticated proxy requests
-    Note over API,Admin: Prototype boundary. Customer auth is mocked and admin access stays on a separate server surface.
+    Note over API,Admin: Customer auth is mocked. Admin access stays on a separate server surface.
             </pre>
             <p class="caption">
                 Figure D2. Implemented prototype access flow showing mocked OTP login, client-side state persistence, automatic session start, and a separate admin boundary.

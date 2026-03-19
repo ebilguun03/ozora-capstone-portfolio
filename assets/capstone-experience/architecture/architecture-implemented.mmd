@@ -1,53 +1,22 @@
 flowchart LR
-    subgraph client["Customer Experience"]
-        ios["SwiftUI iOS app\nHome | Live Tab | Loyalty | Promotions | History"]
-        auth["AuthService + AppStorage"]
-        tabvm["TabViewModel"]
-    end
-
-    subgraph admin["Restaurant Operations"]
-        dash["Admin dashboard\nHTML / CSS / JS"]
-        proxy["Admin proxy API\nadmin/api/admin.js"]
-    end
-
-    subgraph backend["Backend Platform"]
-        express["Express routes\n/auth /session /tab /webhook /loyalty /promotions /history"]
-        socket["Socket.io rooms\nsession_[id] / user_[id]"]
-        data["dataService.js"]
-        ws["websocketService.js"]
-    end
-
-    subgraph simulation["Demo + Validation Scripts"]
-        simOrder["simulateOrder.js"]
-        simCheckout["simulateCheckout.js"]
-        reset["resetDemoFlow.js"]
-    end
-
-    subgraph storage["File-backed Data"]
-        users["users.json"]
-        sessions["sessions.json"]
-        tabs["tabs.json"]
-        loyalty["loyalty.json"]
-        promos["promotions.json"]
-        history["history.json"]
-        menu["menu.json"]
-    end
+    ios["SwiftUI iOS app"]
+    auth["Auth service"]
+    tabvm["Tab view model"]
+    admin["Admin dashboard"]
+    proxy["Admin proxy"]
+    api["Express API routes"]
+    socket["WebSocket rooms"]
+    data["Data service"]
+    sim["Demo scripts"]
+    store["JSON data files"]
 
     ios --> auth
-    ios -->|"REST via APIService"| express
-    tabvm -->|"subscribe + refresh on tabUpdated"| socket
-    express --> data
-    express --> ws
-    ws --> socket
-    data --> users
-    data --> sessions
-    data --> tabs
-    data --> loyalty
-    data --> promos
-    data --> history
-    data --> menu
-    dash --> proxy
-    proxy -->|"backend requests"| express
-    simOrder -->|"POST /api/webhook/toast"| express
-    simCheckout -->|"close session + write receipt"| storage
-    reset -->|"reset deterministic demo state"| storage
+    ios --> api
+    tabvm --> socket
+    admin --> proxy
+    proxy --> api
+    api --> data
+    api --> socket
+    data --> store
+    sim --> api
+    sim --> store

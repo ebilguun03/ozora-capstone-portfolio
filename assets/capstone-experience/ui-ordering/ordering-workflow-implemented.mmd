@@ -1,27 +1,27 @@
 sequenceDiagram
     actor Diner
-    participant iOS as SwiftUI iOS app
-    participant API as Express API
-    participant Session as Session route
-    participant POS as POS simulator
-    participant WS as WebSocket room
-    participant Tab as Tab store
-    participant Checkout as Checkout script
-    participant History as Receipt and loyalty data
+    participant App
+    participant API
+    participant Session
+    participant POS
+    participant Room
+    participant Tab
+    participant Checkout
+    participant History
 
-    Diner->>iOS: Sign in
-    iOS->>API: POST /api/auth/login
-    API-->>iOS: Demo user + mock token
-    Diner->>iOS: Open Live Tab
-    iOS->>Session: POST /api/session/start
+    Diner->>App: Sign in
+    App->>API: Login request
+    API-->>App: Demo user and token
+    Diner->>App: Open Live Tab
+    App->>Session: Start session
     Session->>Tab: Create empty tab
-    Session-->>iOS: sessionId
-    iOS->>WS: Subscribe to session_[id]
-    POS->>API: POST /api/webhook/toast with item states
+    Session-->>App: Return session id
+    App->>Room: Subscribe to session room
+    POS->>API: Send staged order update
     API->>Tab: Replace tab items and recalculate totals
-    API->>WS: Emit tabUpdated
-    WS-->>iOS: tabUpdated event
-    iOS->>API: GET /api/tab/:sessionId
-    API-->>iOS: Updated items, status, subtotal, tax, total
+    API->>Room: Emit tab update
+    Room-->>App: Tab updated event
+    App->>API: Fetch latest tab
+    API-->>App: Current tab data
     Checkout->>Tab: Mark tab paid
     Checkout->>History: Write receipt and loyalty points
