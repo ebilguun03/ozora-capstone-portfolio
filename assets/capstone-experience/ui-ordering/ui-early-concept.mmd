@@ -1,0 +1,16 @@
+flowchart TD
+    launch["Launch app"]
+    login["Sign in with demo email + OTP"]
+    home["Home screen\nrestaurant identity + sign-in entry"]
+    tab["Live tab focus\ncurrent order + total"]
+    planned1["Planned enhancement:\nloyalty rewards"]
+    planned2["Planned enhancement:\npromotions"]
+    planned3["Planned enhancement:\nreceipt history"]
+
+    launch --> login --> home --> tab
+    tab -. "future expansion" .-> planned1
+    tab -. "future expansion" .-> planned2
+    tab -. "future expansion" .-> planned3
+
+    note["Design assumption:\nprove the in-restaurant tab experience first,\nthen add supporting customer features"]
+    tab --> note

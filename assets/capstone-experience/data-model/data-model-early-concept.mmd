@@ -1,0 +1,45 @@
+erDiagram
+    USER {
+        string id
+        string email
+        string name
+        double total_spend
+        int visit_count
+    }
+
+    SESSION {
+        string id
+        string userId
+        string restaurantId
+        string status
+        datetime startTime
+    }
+
+    TAB {
+        string id
+        string sessionId
+        double subtotal
+        double tax
+        double total
+        string status
+    }
+
+    LOYALTY_ACCOUNT {
+        string userId
+        int points
+        string tier
+        double earnRate
+    }
+
+    PROMOTION {
+        string id
+        string title
+        string discount
+        string targetSegment
+        datetime validUntil
+    }
+
+    USER ||--o{ SESSION : starts
+    SESSION ||--|| TAB : opens
+    USER ||--|| LOYALTY_ACCOUNT : owns
+    USER }o--o{ PROMOTION : qualifies_for

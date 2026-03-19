@@ -1,0 +1,24 @@
+flowchart LR
+    diner["Diner"]
+
+    subgraph mobile["Customer Mobile Prototype"]
+        app["SwiftUI app\nLogin + Home + Tab"]
+    end
+
+    subgraph platform["Platform Core"]
+        api["Node / Express API"]
+        files["JSON storage\nusers, sessions, tabs"]
+    end
+
+    subgraph operations["Operations"]
+        manual["Manual monitoring\nconsole + file checks"]
+    end
+
+    diner --> app
+    app -->|"REST requests\nlogin / session / tab"| api
+    api -->|"read + write"| files
+    manual -. "inspect demo state" .-> files
+    manual -. "restart / verify API" .-> api
+
+    gap["Pain point:\nstate changes were only visible after polling or manual checks"]
+    api --> gap

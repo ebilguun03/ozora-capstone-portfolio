@@ -3,170 +3,704 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Experience - Ozora Capstone Portfolio</title>
+    <title>Capstone Experience - Ozora Capstone Portfolio</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header class="site-header">
-        <nav class="top-nav" aria-label="Primary">
-            <a class="brand" href="index.html">
-                <span class="brand-kicker">UW Bothell CSS Capstone</span>
-                <span class="brand-title">Ozora Smart Dining Platform</span>
-            </a>
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="user.html">User</a></li>
-                <li><a href="experience.html" aria-current="page">Experience</a></li>
-                <li><a href="bibliography.html">Bibliography</a></li>
-                <li><a href="reflection.html">Overall</a></li>
+
+<nav>
+    <h2>Ozora Smart Dining Platform</h2>
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="user.html">The User</a></li>
+        <li><a href="experience.html" aria-current="page">Capstone Experience</a></li>
+        <li><a href="bibliography.html">Annotated Bibliography</a></li>
+        <li><a href="reflection.html">Overall Capstone Reflection</a></li>
+    </ul>
+</nav>
+
+<main class="capstone-page">
+    <section class="hero">
+        <p class="eyebrow">Ozora Smart Dining Platform</p>
+        <h1>Capstone Experience</h1>
+        <p class="hero-copy">
+            This page documents how Ozora evolved from a focused mobile dining concept into a multi-surface smart dining platform
+            with real-time tab updates, loyalty tracking, promotion management, and repeatable demo tooling. Each section pairs an
+            early concept artifact with a revised implementation artifact so the portfolio shows technical growth over time instead
+            of only the final state.
+        </p>
+        <div class="resource-row">
+            <a class="resource-link" href="assets/capstone-experience/capstone-artifact-guide.md">Open artifact guide</a>
+            <a class="resource-link" href="README.md">Open project README</a>
+        </div>
+    </section>
+
+    <section class="overview-grid">
+        <article class="overview-card">
+            <h2>Recommended Themes</h2>
+            <ul class="clean-list">
+                <li>Architecture</li>
+                <li>UI and ordering workflow</li>
+                <li>Data model and schema</li>
+                <li>Authentication and access boundaries</li>
+                <li>Testing, feedback, and revision evidence</li>
             </ul>
-        </nav>
-    </header>
+        </article>
+        <article class="overview-card">
+            <h2>Theme to Artifact Mapping</h2>
+            <ul class="clean-list">
+                <li>Architecture: early concept to implemented multi-surface architecture</li>
+                <li>UI and ordering: early mobile IA to end-to-end live ordering workflow</li>
+                <li>Data model: minimum viable schema to implemented file-backed model</li>
+                <li>Authentication: lightweight sign-in assumption to implemented prototype access flow</li>
+                <li>Testing: manual verification loop to deterministic demo validation pipeline</li>
+            </ul>
+        </article>
+    </section>
 
-    <main class="page-shell">
-        <section class="page-intro surface">
-            <p class="eyebrow">Experience</p>
-            <h1>Artifacts showing how the system changed over the quarter</h1>
-            <p class="lead">
-                This page presents the capstone from the developer perspective. Each theme names a major architectural
-                part of the system and pairs artifact annotations with evidence of how the work was first imagined, then
-                revised as the project became more concrete.
-            </p>
-        </section>
-
-        <section class="artifact-sections">
-            <article class="surface artifact-section">
+    <section class="theme-section">
+        <div class="theme-header">
+            <div>
+                <p class="theme-tag">Theme 1</p>
                 <h2>Architecture</h2>
-                <p class="theme-summary">
-                    The architecture theme explains how the platform moved from an early concept model into a system with
-                    clearer responsibilities between interface, service logic, and data handling.
-                </p>
+            </div>
+            <span class="support-badge strong">Strong code support</span>
+        </div>
+        <p class="theme-intro">
+            Ozora strongly supports an architecture theme because the repository contains a SwiftUI client, an Express backend,
+            Socket.io infrastructure, a separate admin dashboard, shared data services, and deterministic simulator scripts.
+        </p>
 
-                <div class="artifact-entry">
-                    <h3>Early system concept</h3>
-                    <p>
-                        This artifact establishes the first high-level model of the application. It is useful because it
-                        shows the original assumptions about the relationship between the customer interface, restaurant
-                        workflow, and supporting backend services.
-                    </p>
-                    <div class="artifact-placeholder">Insert the original architecture diagram here.</div>
-                </div>
+        <article class="artifact-card">
+            <p class="artifact-kicker">Figure A1. Early Concept Architecture for Ozora</p>
+            <p>
+                The project started as a mobile-first restaurant prototype, so the earliest architecture was likely centered on
+                proving that a customer app could log in, start a dining session, and read a live tab from a simple API. The
+                current repository still shows that foundation in the separation between the iOS client, the Express routes,
+                and the file-backed data service.
+            </p>
+            <p class="artifact-analysis">
+                This artifact shows a focused first-pass architecture with a single client, a single backend, and JSON persistence.
+                It is an early concept inferred from the present structure. What changed later was the addition of the admin dashboard,
+                WebSocket-driven updates, and simulator tooling. That mattered because the project became a believable platform rather
+                than a narrow mobile mockup. I learned that capstone architecture needs both user-facing flow and operational support.
+            </p>
+            <div class="artifact-actions">
+                <a href="assets/capstone-experience/architecture/architecture-early-concept.mmd">Mermaid source</a>
+            </div>
+            <pre class="mermaid">
+flowchart LR
+    diner["Diner"]
 
-                <div class="artifact-entry">
-                    <h3>Revised architecture</h3>
-                    <p>
-                        This artifact shows how the system had to be reorganized once the project scope became more
-                        precise. The revision can highlight any change in boundaries, responsibilities, or service flow
-                        that made the implementation more realistic.
-                    </p>
-                    <div class="artifact-placeholder">Insert the updated architecture diagram here.</div>
-                </div>
-            </article>
+    subgraph mobile["Customer Mobile Prototype"]
+        app["SwiftUI app\nLogin + Home + Tab"]
+    end
 
-            <article class="surface artifact-section">
-                <h2>User Interface</h2>
-                <p class="theme-summary">
-                    The user interface theme documents how menu browsing, ordering, and status feedback evolved from
-                    early layout ideas into a more coherent interaction flow.
-                </p>
+    subgraph platform["Platform Core"]
+        api["Node / Express API"]
+        files["JSON storage\nusers, sessions, tabs"]
+    end
 
-                <div class="artifact-entry">
-                    <h3>Initial interface sketches or wireframes</h3>
-                    <p>
-                        This artifact captures the first pass at navigation, screen hierarchy, and user actions. It
-                        helps explain what information seemed important at the start of the quarter and what still needed refinement.
-                    </p>
-                    <div class="artifact-placeholder">Insert early wireframes or initial UI screenshots here.</div>
-                </div>
+    subgraph operations["Operations"]
+        manual["Manual monitoring\nconsole + file checks"]
+    end
 
-                <div class="artifact-entry">
-                    <h3>Later interface revision</h3>
-                    <p>
-                        This artifact shows the state of the interface after feedback, iteration, or implementation
-                        constraints changed the design. The comparison is meant to make the project’s UI growth visible.
-                    </p>
-                    <div class="artifact-placeholder">Insert revised interface screenshots here.</div>
-                </div>
-            </article>
+    diner --> app
+    app -->|"REST requests\nlogin / session / tab"| api
+    api -->|"read + write"| files
+    manual -. "inspect demo state" .-> files
+    manual -. "restart / verify API" .-> api
 
-            <article class="surface artifact-section">
-                <h2>Database</h2>
-                <p class="theme-summary">
-                    The database theme shows how data entities and relationships were organized to support ordering,
-                    menus, and operational needs in the platform.
-                </p>
+    gap["Pain point:\nstate changes were only visible after polling or manual checks"]
+    api --> gap
+            </pre>
+            <p class="caption">
+                Figure A1. Early concept architecture focused on proving the mobile dining workflow before operational tooling and real-time coordination were added.
+            </p>
+        </article>
 
-                <div class="artifact-entry">
-                    <h3>Original data model</h3>
-                    <p>
-                        This artifact provides the first database or domain representation. It is important because it
-                        captures how the project initially understood the information needed to support the application.
-                    </p>
-                    <div class="artifact-placeholder">Insert the original database or UML diagram here.</div>
-                </div>
+        <article class="artifact-card">
+            <p class="artifact-kicker">Figure A2. Implemented Multi-Surface Architecture</p>
+            <p>
+                As the implementation matured, the project moved beyond a simple request-response prototype and into a more
+                credible smart dining platform. The revised architecture shows how the customer app, backend services, admin
+                dashboard, and simulation scripts work together around shared data and real-time events.
+            </p>
+            <p class="artifact-analysis">
+                This artifact shows the implemented architecture present in the codebase today. It is the revised version. The
+                change was the introduction of Socket.io rooms, the admin proxy dashboard, and simulator scripts around the original
+                REST core. That mattered because it made the system observable, repeatable, and easier to present. I learned that
+                real-time features become much more credible when surrounding tooling makes them testable and visible.
+            </p>
+            <div class="artifact-actions">
+                <a href="assets/capstone-experience/architecture/architecture-implemented.mmd">Mermaid source</a>
+            </div>
+            <pre class="mermaid">
+flowchart LR
+    subgraph client["Customer Experience"]
+        ios["SwiftUI iOS app\nHome | Live Tab | Loyalty | Promotions | History"]
+        auth["AuthService + AppStorage"]
+        tabvm["TabViewModel"]
+    end
 
-                <div class="artifact-entry">
-                    <h3>Updated schema or domain revision</h3>
-                    <p>
-                        This artifact records where the data model changed in response to implementation needs,
-                        additional features, or simplification of the scope. That change helps explain how the system became workable.
-                    </p>
-                    <div class="artifact-placeholder">Insert the updated schema, UML, or data model here.</div>
-                </div>
-            </article>
+    subgraph admin["Restaurant Operations"]
+        dash["Admin dashboard\nHTML / CSS / JS"]
+        proxy["Admin proxy API\nadmin/api/admin.js"]
+    end
 
-            <article class="surface artifact-section">
-                <h2>Authentication and Access</h2>
-                <p class="theme-summary">
-                    This theme focuses on how the platform distinguished between user roles, protected access, or managed
-                    sign-in and account flow if those features were part of the implementation.
-                </p>
+    subgraph backend["Backend Platform"]
+        express["Express routes\n/auth /session /tab /webhook /loyalty /promotions /history"]
+        socket["Socket.io rooms\nsession_<id> | user_<id>"]
+        data["dataService.js"]
+        ws["websocketService.js"]
+    end
 
-                <div class="artifact-entry">
-                    <h3>Access design or requirements</h3>
-                    <p>
-                        This artifact can document role definitions, sign-in logic, or security assumptions at the point
-                        where the project was still defining who needed access to which features.
-                    </p>
-                    <div class="artifact-placeholder">Insert authentication flow notes, diagram, or early code here.</div>
-                </div>
+    subgraph simulation["Demo + Validation Scripts"]
+        simOrder["simulateOrder.js"]
+        simCheckout["simulateCheckout.js"]
+        reset["resetDemoFlow.js"]
+    end
 
-                <div class="artifact-entry">
-                    <h3>Implemented or revised access flow</h3>
-                    <p>
-                        This artifact shows how the access model changed once implementation details exposed constraints,
-                        edge cases, or a need to simplify the workflow for the final version.
-                    </p>
-                    <div class="artifact-placeholder">Insert revised authentication artifact here.</div>
-                </div>
-            </article>
+    subgraph storage["File-backed Data"]
+        users["users.json"]
+        sessions["sessions.json"]
+        tabs["tabs.json"]
+        loyalty["loyalty.json"]
+        promos["promotions.json"]
+        history["history.json"]
+        menu["menu.json"]
+    end
 
-            <article class="surface artifact-section">
-                <h2>Testing and Feedback</h2>
-                <p class="theme-summary">
-                    The testing and feedback theme captures how evaluation, critique, and iteration affected the final
-                    form of the capstone.
-                </p>
+    ios --> auth
+    ios -->|"REST via APIService"| express
+    tabvm -->|"subscribe + refresh on tabUpdated"| socket
+    express --> data
+    express --> ws
+    ws --> socket
+    data --> users
+    data --> sessions
+    data --> tabs
+    data --> loyalty
+    data --> promos
+    data --> history
+    data --> menu
+    dash --> proxy
+    proxy -->|"backend requests"| express
+    simOrder -->|"POST /api/webhook/toast"| express
+    simCheckout -->|"close session + write receipt"| storage
+    reset -->|"reset deterministic demo state"| storage
+            </pre>
+            <p class="caption">
+                Figure A2. Implemented architecture showing the SwiftUI app, admin dashboard, backend services, simulator scripts, and file-backed data model working together.
+            </p>
+        </article>
+    </section>
 
-                <div class="artifact-entry">
-                    <h3>Feedback, test plan, or review notes</h3>
-                    <p>
-                        This artifact demonstrates where the project received outside input. It can include test plans,
-                        stakeholder reactions, peer comments, or instructor feedback that revealed issues in the current design.
-                    </p>
-                    <div class="artifact-placeholder">Insert feedback notes, survey results, or testing plan here.</div>
-                </div>
+    <section class="theme-section">
+        <div class="theme-header">
+            <div>
+                <p class="theme-tag">Theme 2</p>
+                <h2>UI and Ordering Workflow</h2>
+            </div>
+            <span class="support-badge strong">Strong code support</span>
+        </div>
+        <p class="theme-intro">
+            This theme is strongly supported by the SwiftUI navigation structure, the five-tab interface, automatic session creation,
+            and the staged order simulator that drives visible status changes in the Live Tab screen.
+        </p>
 
-                <div class="artifact-entry">
-                    <h3>Revision after feedback</h3>
-                    <p>
-                        This artifact shows the project after that input changed a design, workflow, or technical
-                        decision. Presenting both moments makes the process of learning and revision visible instead of only showing an endpoint.
-                    </p>
-                    <div class="artifact-placeholder">Insert artifact showing the post-feedback revision here.</div>
-                </div>
-            </article>
-        </section>
-    </main>
+        <article class="artifact-card">
+            <p class="artifact-kicker">Figure B1. Early Mobile Information Architecture</p>
+            <p>
+                The strongest user story in Ozora is the in-restaurant tab experience, so the earliest interface concept was likely
+                organized around a short path from sign-in to a live order view. The final app still reflects that priority because
+                the Live Tab remains the most behavior-rich screen in the client.
+            </p>
+            <p class="artifact-analysis">
+                This artifact shows a likely early mobile IA focused on the primary customer task. It is an inferred early concept.
+                What changed was that loyalty, promotions, and history became first-class tabs instead of remaining secondary ideas.
+                That mattered because the experience evolved from a single-feature demo into a fuller customer journey. I learned
+                that surrounding support screens make a flagship feature feel like part of a product instead of a lone demo.
+            </p>
+            <div class="artifact-actions">
+                <a href="assets/capstone-experience/ui-ordering/ui-early-concept.mmd">Mermaid source</a>
+            </div>
+            <pre class="mermaid">
+flowchart TD
+    launch["Launch app"]
+    login["Sign in with demo email + OTP"]
+    home["Home screen\nrestaurant identity + sign-in entry"]
+    tab["Live tab focus\ncurrent order + total"]
+    planned1["Planned enhancement:\nloyalty rewards"]
+    planned2["Planned enhancement:\npromotions"]
+    planned3["Planned enhancement:\nreceipt history"]
+
+    launch --> login --> home --> tab
+    tab -. "future expansion" .-> planned1
+    tab -. "future expansion" .-> planned2
+    tab -. "future expansion" .-> planned3
+
+    note["Design assumption:\nprove the in-restaurant tab experience first,\nthen add supporting customer features"]
+    tab --> note
+            </pre>
+            <p class="caption">
+                Figure B1. Early UI concept centered on a short path from login to the live tab, with other customer features treated as later expansions.
+            </p>
+        </article>
+
+        <article class="artifact-card">
+            <p class="artifact-kicker">Figure B2. Implemented Ordering Workflow Across App, API, and Demo Scripts</p>
+            <p>
+                Once the project had a reliable backend and simulator, the ordering flow could be expressed as a real end-to-end
+                system instead of a static screen sequence. This implemented workflow shows how the app reacts to staged order updates
+                and closes the loop with checkout and receipt generation.
+            </p>
+            <p class="artifact-analysis">
+                This artifact shows the real implemented ordering workflow across client, API, WebSocket events, and supporting
+                scripts. It is the revised version. The major change was moving from a mostly screen-based concept to an event-driven
+                interaction backed by session creation and webhook updates. That mattered because it proved the interface was connected
+                to live system state. I learned that workflow credibility comes from state transitions and side effects, not only visual design.
+            </p>
+            <div class="artifact-actions">
+                <a href="assets/capstone-experience/ui-ordering/ordering-workflow-implemented.mmd">Mermaid source</a>
+            </div>
+            <pre class="mermaid">
+sequenceDiagram
+    actor Diner
+    participant iOS as SwiftUI iOS app
+    participant API as Express API
+    participant Session as session.js
+    participant POS as simulateOrder.js / Toast webhook
+    participant WS as Socket.io room
+    participant Tab as tabs.json
+    participant Checkout as simulateCheckout.js
+    participant History as history.json + loyalty.json
+
+    Diner->>iOS: Sign in
+    iOS->>API: POST /api/auth/login
+    API-->>iOS: Demo user + mock token
+    Diner->>iOS: Open Live Tab
+    iOS->>Session: POST /api/session/start
+    Session->>Tab: Create empty tab
+    Session-->>iOS: sessionId
+    iOS->>WS: Subscribe to session_<id>
+    POS->>API: POST /api/webhook/toast with item states
+    API->>Tab: Replace tab items and recalculate totals
+    API->>WS: Emit tabUpdated
+    WS-->>iOS: tabUpdated event
+    iOS->>API: GET /api/tab/:sessionId
+    API-->>iOS: Updated items, status, subtotal, tax, total
+    Checkout->>Tab: Mark tab paid
+    Checkout->>History: Write receipt and loyalty points
+            </pre>
+            <p class="caption">
+                Figure B2. Implemented ordering workflow showing login, session creation, staged order events, real-time tab refresh, and checkout-driven receipt generation.
+            </p>
+        </article>
+    </section>
+
+    <section class="theme-section">
+        <div class="theme-header">
+            <div>
+                <p class="theme-tag">Theme 3</p>
+                <h2>Data Model and Schema</h2>
+            </div>
+            <span class="support-badge strong">Strong code support</span>
+        </div>
+        <p class="theme-intro">
+            The repository strongly supports a schema theme because the backend data files define a real persistence model that is
+            mirrored in the Swift `Codable` models and consumed by both the mobile app and the admin dashboard.
+        </p>
+
+        <article class="artifact-card">
+            <p class="artifact-kicker">Figure C1. Early Conceptual Data Model</p>
+            <p>
+                A restaurant platform can become over-modeled quickly, so the early data design needed to stay small enough to support
+                a prototype. The core relationships between user, session, tab, loyalty account, and promotion represent the minimum
+                data needed to prove personalized dining behavior.
+            </p>
+            <p class="artifact-analysis">
+                This artifact shows the likely initial conceptual schema for the first working prototype. It is an early concept
+                inferred from the implemented entity boundaries. What changed later was the addition of receipt history, menu structure,
+                rewards, embedded order items, and richer lifecycle fields. That mattered because the system could now show continuity
+                across visits. I learned that schema growth should follow user scenarios, especially when moving from one session to customer history.
+            </p>
+            <div class="artifact-actions">
+                <a href="assets/capstone-experience/data-model/data-model-early-concept.mmd">Mermaid source</a>
+            </div>
+            <pre class="mermaid">
+erDiagram
+    USER {
+        string id
+        string email
+        string name
+        double total_spend
+        int visit_count
+    }
+
+    SESSION {
+        string id
+        string userId
+        string restaurantId
+        string status
+        datetime startTime
+    }
+
+    TAB {
+        string id
+        string sessionId
+        double subtotal
+        double tax
+        double total
+        string status
+    }
+
+    LOYALTY_ACCOUNT {
+        string userId
+        int points
+        string tier
+        double earnRate
+    }
+
+    PROMOTION {
+        string id
+        string title
+        string discount
+        string targetSegment
+        datetime validUntil
+    }
+
+    USER ||--o{ SESSION : starts
+    SESSION ||--|| TAB : opens
+    USER ||--|| LOYALTY_ACCOUNT : owns
+    USER }o--o{ PROMOTION : qualifies_for
+            </pre>
+            <p class="caption">
+                Figure C1. Early conceptual schema showing the minimum entities needed to prove a personalized smart dining experience.
+            </p>
+        </article>
+
+        <article class="artifact-card">
+            <p class="artifact-kicker">Figure C2. Implemented File-Backed Data Model</p>
+            <p>
+                The implemented schema in the repository is richer than a simple tab tracker. It now captures the full story of a
+                dining visit: menu context, tab state, checkout results, loyalty changes, and historical receipts that can feed
+                both the customer app and the admin dashboard.
+            </p>
+            <p class="artifact-analysis">
+                This artifact shows the actual file-backed data model implemented in `backend/data` and mirrored in the Swift models.
+                It is the revised version. The data model grew to preserve historical outcomes, reward logic, and menu-backed item
+                structure. That mattered because it connected ordering, analytics, loyalty, and history into one platform story.
+                I learned that data modeling became the bridge between isolated features and a coherent system.
+            </p>
+            <div class="artifact-actions">
+                <a href="assets/capstone-experience/data-model/data-model-implemented.mmd">Mermaid source</a>
+            </div>
+            <pre class="mermaid">
+erDiagram
+    USER {
+        string id
+        string email
+        string name
+        string phone
+        double total_spend
+        int visit_count
+        datetime created_at
+    }
+
+    SESSION {
+        string id
+        string userId
+        string restaurantId
+        datetime startTime
+        datetime endTime
+        string status
+    }
+
+    TAB {
+        string id
+        string sessionId
+        double subtotal
+        double tax
+        double total
+        string status
+        datetime createdAt
+        datetime updatedAt
+    }
+
+    TAB_ITEM {
+        string name
+        int quantity
+        double price
+        string status
+    }
+
+    LOYALTY_ACCOUNT {
+        string userId
+        int points
+        string tier
+        double earnRate
+        int lifetime_points
+    }
+
+    REWARD {
+        string id
+        string name
+        int pointsCost
+        string description
+    }
+
+    PROMOTION {
+        string id
+        string title
+        string description
+        string discount
+        string targetSegment
+        int minSpend
+        int minOrderTotal
+        datetime validUntil
+        datetime createdAt
+    }
+
+    RECEIPT {
+        string receiptId
+        string userId
+        string sessionId
+        datetime date
+        string restaurant
+        double subtotal
+        double tax
+        double total
+        int pointsEarned
+    }
+
+    RECEIPT_ITEM {
+        string name
+        int quantity
+        double price
+    }
+
+    MENU_CATEGORY {
+        string id
+        string name
+    }
+
+    MENU_ITEM {
+        string id
+        string name
+        double price
+        string description
+    }
+
+    USER ||--o{ SESSION : starts
+    SESSION ||--|| TAB : opens
+    TAB ||--|{ TAB_ITEM : embeds
+    USER ||--|| LOYALTY_ACCOUNT : owns
+    LOYALTY_ACCOUNT ||--o{ REWARD : redeems_from
+    USER }o--o{ PROMOTION : segment_matches
+    USER ||--o{ RECEIPT : receives
+    SESSION ||--o| RECEIPT : closes_as
+    RECEIPT ||--|{ RECEIPT_ITEM : stores
+    MENU_CATEGORY ||--|{ MENU_ITEM : contains
+            </pre>
+            <p class="caption">
+                Figure C2. Implemented schema showing how sessions, tabs, loyalty, promotions, receipts, and menu data now support a longer-lived customer journey.
+            </p>
+        </article>
+    </section>
+
+    <section class="theme-section">
+        <div class="theme-header">
+            <div>
+                <p class="theme-tag">Theme 4</p>
+                <h2>Authentication and Access Boundaries</h2>
+            </div>
+            <span class="support-badge medium">Moderate to strong code support</span>
+        </div>
+        <p class="theme-intro">
+            Authentication is not production-grade in Ozora, but it is still a meaningful capstone theme because the codebase includes
+            a full mock OTP login path, persisted customer state, automatic session bootstrapping, and a clearly separate admin surface.
+        </p>
+
+        <article class="artifact-card">
+            <p class="artifact-kicker">Figure D1. Early Access Assumption</p>
+            <p>
+                Ozora is clearly a prototype, so the earliest access model did not need production-grade identity management. What
+                mattered first was protecting the customer flow behind a sign-in step and keeping the staff workflow conceptually separate.
+            </p>
+            <p class="artifact-analysis">
+                This artifact shows the early access assumption behind the project. It is an inferred early concept. What changed was
+                the move to a concrete mock OTP flow, persistent local auth state, and automatic session setup after login. That mattered
+                because the prototype started to feel like a real app with continuity between screens. I learned that even mocked
+                authentication changes how seriously the rest of the experience is perceived.
+            </p>
+            <div class="artifact-actions">
+                <a href="assets/capstone-experience/auth-access/auth-early-concept.mmd">Mermaid source</a>
+            </div>
+            <pre class="mermaid">
+flowchart TD
+    guest["Guest user"]
+    signin["Simple sign-in gate"]
+    customer["Customer mobile experience"]
+    ops["Restaurant operator view"]
+    assumption["Assumption:\ncustomer and staff use separate surfaces,\nbut only the customer path needs strong UX detail for the first demo"]
+
+    guest --> signin --> customer
+    ops -. "managed separately" .-> customer
+    signin --> assumption
+            </pre>
+            <p class="caption">
+                Figure D1. Early access model treating customer sign-in as a lightweight gateway while staff tools remained conceptually separate.
+            </p>
+        </article>
+
+        <article class="artifact-card">
+            <p class="artifact-kicker">Figure D2. Implemented Prototype Authentication and Access Flow</p>
+            <p>
+                The implemented access flow is intentionally lightweight, but it is still specific enough to document as part of the
+                portfolio. The repo shows a complete prototype path from sign-in to stored customer state, followed by automatic session
+                creation and room-based real-time updates.
+            </p>
+            <p class="artifact-analysis">
+                This artifact shows the real login and access boundaries present in the codebase. It is the revised version. The change
+                was moving from a generic sign-in idea to a concrete mocked OTP workflow plus client-side persistence. That mattered
+                because authentication, session state, and real-time subscriptions became connected. I learned that access flows influence
+                system design far beyond the login screen.
+            </p>
+            <div class="artifact-actions">
+                <a href="assets/capstone-experience/auth-access/auth-implemented.mmd">Mermaid source</a>
+            </div>
+            <pre class="mermaid">
+sequenceDiagram
+    actor Customer
+    participant Home as HomeView
+    participant Login as LoginView
+    participant API as /api/auth/login
+    participant Auth as AuthService
+    participant Storage as AppStorage
+    participant Tab as LiveTabView
+    participant Socket as session room
+    participant Admin as Admin dashboard
+
+    Customer->>Home: Tap Sign In
+    Home->>Login: Present sheet
+    Customer->>Login: Submit email + OTP
+    Login->>API: POST /api/auth/login
+    API-->>Login: user + mock token
+    Login->>Auth: set currentUser + isAuthenticated
+    Auth->>Storage: persist token and user fields
+    Auth-->>Home: authenticated state
+    Customer->>Tab: Open Live Tab
+    Tab->>API: POST /api/session/start
+    Tab->>Socket: subscribe to session_<id>
+    Admin->>API: Separate unauthenticated proxy requests
+    Note over API,Admin: Prototype boundary: customer auth is mocked,\nadmin access is isolated by a different server surface
+            </pre>
+            <p class="caption">
+                Figure D2. Implemented prototype access flow showing mocked OTP login, client-side state persistence, automatic session start, and a separate admin boundary.
+            </p>
+        </article>
+    </section>
+
+    <section class="theme-section">
+        <div class="theme-header">
+            <div>
+                <p class="theme-tag">Theme 5</p>
+                <h2>Testing, Feedback, and Revision Evidence</h2>
+            </div>
+            <span class="support-badge strong">Strong code support</span>
+        </div>
+        <p class="theme-intro">
+            This theme is supported by the README testing checklist and, more importantly, by real tooling in the repository that
+            resets the demo state, simulates staged orders, closes a session, and exposes the results in both customer and admin views.
+        </p>
+
+        <article class="artifact-card">
+            <p class="artifact-kicker">Figure E1. Early Manual Validation Loop</p>
+            <p>
+                Early validation for this project was mainly experiential: start the stack, trigger an order, and visually confirm
+                that the tab changed. That kind of manual loop is common in prototypes, and the README checklist still preserves that phase.
+            </p>
+            <p class="artifact-analysis">
+                This artifact shows the likely original validation pattern before the demo tooling became more disciplined. It is an
+                inferred early concept. What changed was the addition of reset and checkout scripts that make demos and verification
+                more repeatable. That mattered because feedback could focus on behavior instead of setup luck. I learned that a strong
+                capstone demo depends on the quality of the validation loop around it.
+            </p>
+            <div class="artifact-actions">
+                <a href="assets/capstone-experience/testing-revision/testing-early-manual.mmd">Mermaid source</a>
+            </div>
+            <pre class="mermaid">
+flowchart TD
+    setup["Start backend + admin + iOS app"]
+    login["Log in with demo account"]
+    tab["Open Live Tab"]
+    script["Run simulate:order"]
+    observe["Observe item/status changes in simulator"]
+    verify["Check totals and API health manually"]
+    iterate["Adjust code, rerun demo"]
+
+    setup --> login --> tab --> script --> observe --> verify --> iterate
+    iterate --> setup
+            </pre>
+            <p class="caption">
+                Figure E1. Early testing loop based on manual setup, simulation, visual confirmation, and repeated iteration.
+            </p>
+        </article>
+
+        <article class="artifact-card">
+            <p class="artifact-kicker">Figure E2. Revised Deterministic Demo and Validation Loop</p>
+            <p>
+                The revised validation loop is one of the strongest hidden artifacts in the repository because it shows engineering
+                maturity. Instead of only proving that orders can appear, the project now proves that an end-to-end visit can be reset,
+                replayed, checked out, and reflected in history, loyalty, and admin analytics.
+            </p>
+            <p class="artifact-analysis">
+                This artifact shows the implemented revision loop backed by actual npm scripts and downstream data updates. It is the
+                revised version. Validation expanded from manual UI observation to a deterministic multi-step demo workflow. That
+                mattered because it created stronger evidence for stakeholder feedback and presentation readiness. I learned that good
+                demo tooling is part of the product story because it proves the system can survive repeated evaluation.
+            </p>
+            <div class="artifact-actions">
+                <a href="assets/capstone-experience/testing-revision/testing-revised-demo-loop.mmd">Mermaid source</a>
+            </div>
+            <pre class="mermaid">
+flowchart LR
+    reset["reset:demo-flow\nclear tab, loyalty, history"]
+    session["startSession\ncreate fresh session + empty tab"]
+    orders["simulate:order\n4 staged webhook payloads"]
+    realtime["iOS receives tabUpdated\nand reloads current tab"]
+    checkout["simulate:checkout\nclose session + create receipt"]
+    analytics["Admin analytics re-read history\nand latest order data"]
+    evidence["Deterministic capstone evidence:\nUI change, receipt, loyalty delta, analytics delta"]
+
+    reset --> session --> orders --> realtime --> checkout --> analytics --> evidence
+            </pre>
+            <p class="caption">
+                Figure E2. Revised validation pipeline showing how deterministic scripts now produce repeatable evidence across UI, receipts, loyalty, and analytics.
+            </p>
+        </article>
+    </section>
+
+    <section class="overview-card final-notes">
+        <h2>Asset Package</h2>
+        <p>
+            All source diagrams are stored in <code>assets/capstone-experience/</code>. The file
+            <code>assets/capstone-experience/capstone-artifact-guide.md</code> contains the same theme mapping,
+            captions, and annotation text in a reusable reference format.
+        </p>
+    </section>
+</main>
+
+<script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+    mermaid.initialize({
+        startOnLoad: true,
+        theme: 'neutral',
+        flowchart: { curve: 'linear' },
+        securityLevel: 'loose'
+    });
+</script>
+
 </body>
 </html>

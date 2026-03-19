@@ -1,0 +1,10 @@
+flowchart TD
+    guest["Guest user"]
+    signin["Simple sign-in gate"]
+    customer["Customer mobile experience"]
+    ops["Restaurant operator view"]
+    assumption["Assumption:\ncustomer and staff use separate surfaces,\nbut only the customer path needs strong UX detail for the first demo"]
+
+    guest --> signin --> customer
+    ops -. "managed separately" .-> customer
+    signin --> assumption

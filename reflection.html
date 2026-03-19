@@ -3,119 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Overall - Ozora Capstone Portfolio</title>
+    <title>Overall Capstone Reflection - Ozora Capstone Portfolio</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header class="site-header">
-        <nav class="top-nav" aria-label="Primary">
-            <a class="brand" href="index.html">
-                <span class="brand-kicker">UW Bothell CSS Capstone</span>
-                <span class="brand-title">Ozora Smart Dining Platform</span>
-            </a>
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="user.html">User</a></li>
-                <li><a href="experience.html">Experience</a></li>
-                <li><a href="bibliography.html">Bibliography</a></li>
-                <li><a href="reflection.html" aria-current="page">Overall</a></li>
-            </ul>
-        </nav>
-    </header>
 
-    <main class="page-shell">
-        <section class="page-intro surface">
-            <p class="eyebrow">Overall</p>
-            <h1>A reflective narrative about how the quarter changed the way I work</h1>
-            <p class="lead">
-                This page focuses on what the capstone taught me about my habits, decision-making, and growth during the quarter rather than repeating the technical artifact discussion.
-            </p>
-        </section>
+<nav>
+    <h2>Ozora Smart Dining Platform</h2>
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="user.html">The User</a></li>
+        <li><a href="experience.html">Capstone Experience</a></li>
+        <li><a href="bibliography.html">Annotated Bibliography</a></li>
+        <li><a href="reflection.html" aria-current="page">Overall Capstone Reflection</a></li>
+    </ul>
+</nav>
 
-        <article class="surface reflection-essay">
-            <section>
-                <h2>Starting with ambition instead of structure</h2>
-                <p>
-                    I chose Ozora because I wanted a capstone that felt substantial enough to represent both product
-                    thinking and software engineering. At the start of the quarter, that ambition was helpful because it
-                    gave me energy and a strong sense that the project mattered. At the same time, I learned quickly that
-                    ambition without structure can create confusion. It is easy to say a project is about improving the
-                    dining experience, but it is much harder to define which parts of that experience the system actually
-                    needs to solve and which parts are only ideas that sound exciting.
-                </p>
-                <p>
-                    The earliest phase of the capstone taught me that I tend to begin with a broad vision and only later
-                    force myself to narrow it into decisions. That pattern is useful for creativity, but it can also slow
-                    progress when a project depends on clear scope. I had to learn to move from a large concept into
-                    smaller commitments so the work could become visible, testable, and explainable.
-                </p>
-            </section>
+<main class="content-page">
+    <section class="content-hero">
+        <p class="eyebrow">Capstone Reflection</p>
+        <h1>Overall Capstone Reflection</h1>
+        <p>
+            Ozora pushed me to think beyond a single app screen and treat the project as a connected system. I ended up building a
+            SwiftUI client, an Express backend, an admin dashboard, and a set of demo scripts that made the whole experience easier to
+            explain, test, and revise. That shift from feature thinking to system thinking was one of the most important outcomes of the capstone.
+        </p>
+    </section>
 
-            <section>
-                <h2>Learning to revise work that already felt decided</h2>
-                <p>
-                    One of the most important lessons of the quarter was becoming more willing to revise work that I had
-                    already mentally labeled as finished. Early decisions about layout, project framing, and system
-                    organization often felt settled when I first made them. Once feedback and implementation pressure were
-                    added, those decisions became less stable. I had to accept that changing direction was not a sign
-                    that the first attempt failed. It was part of doing the work seriously.
-                </p>
-                <p>
-                    That shift mattered because it changed how I responded to criticism. Instead of defending the first
-                    version of an idea, I became more interested in what the revision was teaching me. The capstone made
-                    me more comfortable with the reality that software projects evolve through friction. The project
-                    improved when I treated revision as progress rather than as a setback.
-                </p>
-            </section>
+    <section class="content-section">
+        <h2>What I Learned About Scope</h2>
+        <p>
+            Early in the project, the obvious temptation was to keep adding restaurant features. The more valuable lesson was learning
+            how to protect the strongest story: a guest opening a session, seeing a live tab, and receiving meaningful updates during a
+            visit. Once that core experience was clear, I could add loyalty, promotions, history, and admin analytics in a way that
+            supported the main use case instead of distracting from it.
+        </p>
+    </section>
 
-            <section>
-                <h2>Consistency mattered more than bursts of motivation</h2>
-                <p>
-                    I also learned that motivation alone is not reliable enough to carry a quarter-long project. There
-                    were moments when the work felt exciting and moved quickly, but there were also stretches where the
-                    project felt heavy because it demanded writing, revision, and explanation in addition to technical
-                    work. In those stretches, the capstone depended more on consistency than inspiration.
-                </p>
-                <p>
-                    That was a useful lesson about my own working habits. I work best when I break a large project into
-                    pieces that are small enough to finish and review. When I did that, the project felt manageable. When
-                    I tried to hold too many goals in my head at once, I lost momentum. The quarter showed me that
-                    sustainability is not just about endurance; it is about designing a process that makes continued work possible.
-                </p>
-            </section>
+    <section class="content-section">
+        <h2>What I Learned About Technical Decisions</h2>
+        <p>
+            I learned that even a prototype benefits from deliberate architecture. Using JSON-backed storage kept the project lightweight,
+            but pairing that with clear routes, reusable services, and real-time events made the system feel much more complete. I also
+            saw how implementation details shape the portfolio story. Adding simulator scripts and checkout tooling did not only help
+            development; those choices created stronger evidence for testing, iteration, and system behavior.
+        </p>
+    </section>
 
-            <section>
-                <h2>Explaining the work made the work clearer</h2>
-                <p>
-                    Another major takeaway came from the need to explain the project to different audiences. The user
-                    page, artifact page, and reflective page each ask for a different point of view, and that separation
-                    forced me to see gaps in my own understanding. If I could not explain the project clearly from the
-                    stakeholder perspective or from the developer perspective, then the project itself was not yet clear enough.
-                </p>
-                <p>
-                    That experience showed me how much communication is part of technical work. Writing about artifacts,
-                    describing design changes, and organizing the portfolio required me to connect decisions to reasons.
-                    In that sense, the portfolio was not separate from the capstone. It was another stage of learning,
-                    because explanation turned vague effort into something more thoughtful and defensible.
-                </p>
-            </section>
+    <section class="content-section">
+        <h2>What I Learned About Communication</h2>
+        <p>
+            This capstone reinforced that good engineering work has to be explainable. Building the artifact package forced me to turn
+            code structure into architecture diagrams, workflow diagrams, and annotations that show how the project changed over time.
+            That process made the project easier to present because it highlighted why certain revisions mattered, not just what files changed.
+        </p>
+    </section>
 
-            <section>
-                <h2>Conclusion</h2>
-                <p>
-                    The capstone changed the way I think about growth in software projects. I finished the quarter with a
-                    stronger understanding that good work is rarely produced in one clean pass. It develops through
-                    feedback, revision, documentation, and the discipline to keep improving the project after the first
-                    idea stops feeling new.
-                </p>
-                <p>
-                    The next step for this capstone is to keep refining the artifacts and project explanation so the work
-                    better represents the full quarter of development. More broadly, I want to carry forward the habits
-                    that this project made visible: narrowing scope earlier, revising more willingly, and building steady
-                    progress instead of waiting for perfect momentum.
-                </p>
-            </section>
-        </article>
-    </main>
+    <section class="content-section">
+        <h2>How I Grew</h2>
+        <p>
+            I grew most in connecting implementation choices to user value. I did not just build screens or endpoints in isolation; I
+            had to show how each part contributed to a more transparent dining experience. I also became more aware of how supporting
+            tools, documentation, and repeatable demos affect the credibility of a project. By the end of the capstone, I was thinking
+            more like a developer who has to design, build, test, explain, and defend a complete solution.
+        </p>
+    </section>
+</main>
+
 </body>
 </html>
