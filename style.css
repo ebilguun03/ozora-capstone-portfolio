@@ -217,6 +217,30 @@
     margin-bottom: 0;
 }
 
+.portfolio-theme {
+    padding: 1.5rem;
+}
+
+.portfolio-theme h2 {
+    margin: 0 0 0.7rem;
+}
+
+.theme-narrative {
+    margin: 0 0 1.2rem;
+    max-width: 68ch;
+    color: var(--muted);
+}
+
+.artifact-card.compact h3 {
+    margin: 0 0 0.55rem;
+    color: var(--heading);
+}
+
+.figure-note {
+    margin: 0 0 0.85rem !important;
+    color: var(--muted);
+}
+
 @media (max-width: 760px) {
     .overview-grid {
         grid-template-columns: 1fr;
@@ -228,6 +252,7 @@
 
     .overview-card,
     .theme-section,
+    .portfolio-theme,
     .content-hero,
     .content-section,
     .artifact-card {
