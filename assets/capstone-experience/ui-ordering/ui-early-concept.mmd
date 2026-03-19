@@ -1,16 +1,19 @@
 flowchart TD
-    launch["Launch app"]
-    login["Sign in with demo email + OTP"]
-    home["Home screen\nrestaurant identity + sign-in entry"]
-    tab["Live tab focus\ncurrent order + total"]
-    planned1["Planned enhancement:\nloyalty rewards"]
-    planned2["Planned enhancement:\npromotions"]
-    planned3["Planned enhancement:\nreceipt history"]
+    subgraph primary["Initial customer path"]
+        signin["Sign in"]
+        home["Home"]
+        live["Live Tab"]
+    end
 
-    launch --> login --> home --> tab
-    tab -. "future expansion" .-> planned1
-    tab -. "future expansion" .-> planned2
-    tab -. "future expansion" .-> planned3
+    subgraph later["Supporting features added later"]
+        direction LR
+        loyalty["Loyalty"]
+        offers["Promotions"]
+        history["History"]
+    end
 
-    note["Design assumption:\nprove the in-restaurant tab experience first,\nthen add supporting customer features"]
-    tab --> note
+    signin --> home
+    home --> live
+    live --> loyalty
+    live --> offers
+    live --> history

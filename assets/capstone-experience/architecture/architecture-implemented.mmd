@@ -1,22 +1,35 @@
-flowchart LR
-    ios["SwiftUI iOS app"]
-    auth["Auth service"]
-    tabvm["Tab view model"]
-    admin["Admin dashboard"]
-    proxy["Admin proxy"]
-    api["Express API routes"]
-    socket["WebSocket rooms"]
-    data["Data service"]
-    sim["Demo scripts"]
-    store["JSON data files"]
+flowchart TD
+    subgraph surfaces["Experience surfaces"]
+        direction LR
+        ios["SwiftUI iOS app\nHome, Live Tab, Loyalty,\nPromotions, History"]
+        admin["Admin dashboard\nCustomers, Sessions,\nPromotions, Analytics"]
+        scripts["Demo scripts\nsimulateOrder,\nsimulateCheckout,\nresetDemoFlow"]
+    end
 
-    ios --> auth
-    ios --> api
-    tabvm --> socket
-    admin --> proxy
-    proxy --> api
-    api --> data
-    api --> socket
-    data --> store
-    sim --> api
-    sim --> store
+    subgraph transport["Delivery and realtime layer"]
+        direction LR
+        routes["Express routes\nauth, session, tab, webhook,\nloyalty, promotions, history"]
+        socket["Socket.io rooms\nsession channel, user channel"]
+    end
+
+    subgraph services["Shared backend services"]
+        direction LR
+        data["dataService.js"]
+        ws["websocketService.js"]
+    end
+
+    subgraph records["File-backed records"]
+        direction LR
+        core["users, sessions, tabs"]
+        extended["loyalty, promotions,\nhistory, menu"]
+    end
+
+    ios --> routes
+    ios --> socket
+    admin --> routes
+    scripts --> routes
+    routes --> data
+    routes --> ws
+    socket --> ws
+    data --> core
+    data --> extended

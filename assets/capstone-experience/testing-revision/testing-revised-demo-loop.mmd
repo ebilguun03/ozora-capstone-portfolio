@@ -1,10 +1,25 @@
-flowchart LR
-    reset["reset:demo-flow\nclear tab, loyalty, history"]
-    session["startSession\ncreate fresh session + empty tab"]
-    orders["simulate:order\n4 staged webhook payloads"]
-    realtime["iOS receives tabUpdated\nand reloads current tab"]
-    checkout["simulate:checkout\nclose session + create receipt"]
-    analytics["Admin analytics re-read history\nand latest order data"]
-    evidence["Deterministic capstone evidence:\nUI change, receipt, loyalty delta, analytics delta"]
+flowchart TD
+    subgraph prep["Deterministic demo setup"]
+        reset["Reset demo state"]
+        start["Start session"]
+    end
 
-    reset --> session --> orders --> realtime --> checkout --> analytics --> evidence
+    subgraph replay["Replay and verify"]
+        orders["Replay staged orders"]
+        live["Verify live tab state"]
+        close["Simulate checkout"]
+    end
+
+    subgraph evidence["Persisted outputs"]
+        receipt["Verify receipt history"]
+        loyalty["Verify loyalty changes"]
+        admin["Verify admin analytics"]
+    end
+
+    reset --> start
+    start --> orders
+    orders --> live
+    live --> close
+    close --> receipt
+    close --> loyalty
+    close --> admin

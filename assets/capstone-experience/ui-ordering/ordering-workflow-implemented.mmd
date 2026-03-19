@@ -1,27 +1,15 @@
-sequenceDiagram
-    actor Diner
-    participant App
-    participant API
-    participant Session
-    participant POS
-    participant Room
-    participant Tab
-    participant Checkout
-    participant History
+flowchart TD
+    signin["Sign in"]
+    session["Start session"]
+    subscribe["Subscribe to session updates"]
+    staged["Replay staged order updates"]
+    refresh["Refresh items and totals"]
+    checkout["Simulate checkout"]
+    persist["Persist receipt and loyalty changes"]
 
-    Diner->>App: Sign in
-    App->>API: Login request
-    API-->>App: Demo user and token
-    Diner->>App: Open Live Tab
-    App->>Session: Start session
-    Session->>Tab: Create empty tab
-    Session-->>App: Return session id
-    App->>Room: Subscribe to session room
-    POS->>API: Send staged order update
-    API->>Tab: Replace tab items and recalculate totals
-    API->>Room: Emit tab update
-    Room-->>App: Tab updated event
-    App->>API: Fetch latest tab
-    API-->>App: Current tab data
-    Checkout->>Tab: Mark tab paid
-    Checkout->>History: Write receipt and loyalty points
+    signin --> session
+    session --> subscribe
+    subscribe --> staged
+    staged --> refresh
+    refresh --> checkout
+    checkout --> persist

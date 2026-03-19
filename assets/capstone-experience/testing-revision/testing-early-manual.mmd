@@ -1,11 +1,12 @@
 flowchart TD
-    setup["Start backend + admin + iOS app"]
-    login["Log in with demo account"]
-    tab["Open Live Tab"]
-    script["Run simulate:order"]
-    observe["Observe item/status changes in simulator"]
-    verify["Check totals and API health manually"]
-    iterate["Adjust code, rerun demo"]
+    subgraph manual["Manual validation loop"]
+        setup["Start backend, admin, and app"]
+        simulate["Run order simulation"]
+        observe["Observe tab changes"]
+        adjust["Adjust code or seed data"]
+    end
 
-    setup --> login --> tab --> script --> observe --> verify --> iterate
-    iterate --> setup
+    setup --> simulate
+    simulate --> observe
+    observe --> adjust
+    adjust --> setup

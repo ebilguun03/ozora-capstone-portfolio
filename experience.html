@@ -29,19 +29,19 @@
         <p class="eyebrow">Experience</p>
         <h1>Technical evolution from prototype idea to connected dining system</h1>
         <p class="lead">
-            Ozora became strongest when the project stopped reading like a collection of screens and started behaving like a system.
-            The sections on this page focus on the four technical areas where that change is most visible: architecture, ordering
-            flow, data design, and revision workflow. Each pair of artifacts keeps the early concept next to the implemented version
-            so the project’s growth stays visible without turning the page into a long report.
+            Ozora became more convincing once the project moved beyond interface ideas and started behaving like a complete software
+            system. This page focuses on the four areas where that shift is most visible: architecture, ordering flow, data design,
+            and revision workflow. Each theme keeps the early concept next to the implemented version so the project’s growth stays
+            visible without turning the page into a long report.
         </p>
     </section>
 
     <section class="portfolio-theme surface">
         <h2>Architecture</h2>
         <p class="theme-narrative">
-            The earliest architecture only needed to prove that a customer could sign in, open a session, and read a live tab from
-            a lightweight backend. As the project matured, the architecture expanded into a clearer platform model with multiple
-            surfaces, real-time updates, shared backend logic, and repeatable demo tooling.
+            The earliest architecture only needed to prove that a customer could sign in, open a session, and read a live tab from a
+            lightweight backend. As the implementation matured, the platform grew into a layered system with customer and operations
+            surfaces, real-time delivery, shared backend services, and persistent records that support multiple features.
         </p>
 
         <article class="artifact-card compact">
@@ -49,80 +49,130 @@
             <p class="figure-note">The first version centered on the smallest stack that could demonstrate a digital dining workflow.</p>
             <pre class="mermaid">
 flowchart TD
-    customer["Customer mobile app"]
-    api["Express API"]
-    data["JSON tab data"]
+    subgraph surface["Prototype surface"]
+        app["SwiftUI customer app\nSign in, Home, Live Tab"]
+    end
 
-    customer --> api
-    api --> data
+    subgraph apiLayer["Application layer"]
+        auth["Auth and session routes"]
+        tab["Tab route"]
+    end
+
+    subgraph records["File-backed records"]
+        users["users.json"]
+        sessions["sessions.json"]
+        tabs["tabs.json"]
+    end
+
+    app --> auth
+    app --> tab
+    auth --> users
+    auth --> sessions
+    tab --> tabs
             </pre>
-            <p class="caption">Figure A1. Early concept architecture focused on a single customer flow backed by a simple API and persistent tab data.</p>
+            <p class="caption">Figure A1. Early concept architecture focused on a mobile-first prototype backed by a small Express layer and file-based session data.</p>
         </article>
 
         <article class="artifact-card compact">
             <h3>Implemented architecture</h3>
-            <p class="figure-note">The final structure shows the project as a platform rather than only a mobile prototype.</p>
+            <p class="figure-note">The final structure makes the project read like a platform, not just a client with storage behind it.</p>
             <pre class="mermaid">
 flowchart TD
-    surfaces["Customer and ops surfaces\nSwiftUI app, admin dashboard, demo scripts"]
-    backend["Platform services\nExpress routes and Socket.io"]
-    logic["Shared backend logic\nsessions, tabs, loyalty, promotions, history"]
-    records["File-backed records\nusers, sessions, tabs, loyalty, promotions, history, menu"]
+    subgraph surfaces["Experience surfaces"]
+        direction LR
+        ios["SwiftUI iOS app\nHome, Live Tab, Loyalty,\nPromotions, History"]
+        admin["Admin dashboard\nCustomers, Sessions,\nPromotions, Analytics"]
+        scripts["Demo scripts\nsimulateOrder,\nsimulateCheckout,\nresetDemoFlow"]
+    end
 
-    surfaces --> backend
-    backend --> logic
-    logic --> records
+    subgraph transport["Delivery and realtime layer"]
+        direction LR
+        routes["Express routes\nauth, session, tab, webhook,\nloyalty, promotions, history"]
+        socket["Socket.io rooms\nsession channel, user channel"]
+    end
+
+    subgraph services["Shared backend services"]
+        direction LR
+        data["dataService.js"]
+        ws["websocketService.js"]
+    end
+
+    subgraph records["File-backed records"]
+        direction LR
+        core["users, sessions, tabs"]
+        extended["loyalty, promotions,\nhistory, menu"]
+    end
+
+    ios --> routes
+    ios --> socket
+    admin --> routes
+    scripts --> routes
+    routes --> data
+    routes --> ws
+    socket --> ws
+    data --> core
+    data --> extended
             </pre>
-            <p class="caption">Figure A2. Implemented architecture showing how the app, admin view, and demo tools now sit on top of shared backend services and data.</p>
+            <p class="caption">Figure A2. Implemented architecture showing the client, admin view, and demo tools working through shared Express, Socket.io, service, and data layers.</p>
         </article>
     </section>
 
     <section class="portfolio-theme surface">
         <h2>UI and Ordering Workflow</h2>
         <p class="theme-narrative">
-            The UI started as a short path into the dining session, with the live tab carrying most of the product value. That early
-            structure grew into a fuller workflow where sign-in, session creation, order updates, running totals, and checkout effects
-            all connect to visible system state instead of isolated screens.
+            The interface began as a short path into the dining session, with the live tab carrying most of the value. That early
+            path evolved into a clearer workflow where sign-in, session creation, subscriptions, staged updates, refreshed totals,
+            and checkout all connect to visible system state instead of isolated screens.
         </p>
 
         <article class="artifact-card compact">
-            <h3>Early interface direction</h3>
-            <p class="figure-note">The early product story focused on getting a guest into the dining session quickly and proving the tab concept first.</p>
+            <h3>Early concept</h3>
+            <p class="figure-note">The first product story emphasized getting the guest into the live tab quickly and treating the rest of the app as supporting expansion.</p>
             <pre class="mermaid">
 flowchart TD
-    launch["Launch app"]
-    login["Sign in"]
-    home["Home"]
-    tab["Live tab"]
-    extras["Loyalty, offers, and history\nplanned after core flow"]
+    subgraph primary["Initial customer path"]
+        signin["Sign in"]
+        home["Home"]
+        live["Live Tab"]
+    end
 
-    launch --> login
-    login --> home
-    home --> tab
-    tab --> extras
+    subgraph later["Supporting features added later"]
+        direction LR
+        loyalty["Loyalty"]
+        offers["Promotions"]
+        history["History"]
+    end
+
+    signin --> home
+    home --> live
+    live --> loyalty
+    live --> offers
+    live --> history
             </pre>
             <p class="caption">Figure B1. Early UI concept centered on a short path from sign-in to the live tab before the supporting customer features were fully developed.</p>
         </article>
 
         <article class="artifact-card compact">
-            <h3>Implemented ordering flow</h3>
-            <p class="figure-note">The final workflow connects the interface to backend events, tab refreshes, and checkout side effects.</p>
+            <h3>Implemented workflow</h3>
+            <p class="figure-note">The final workflow connects app behavior to backend events and persisted outcomes across the dining session.</p>
             <pre class="mermaid">
 flowchart TD
     signin["Sign in"]
     session["Start session"]
-    subscribe["Subscribe live tab"]
-    update["Receive staged order update"]
+    subscribe["Subscribe to session updates"]
+    staged["Replay staged order updates"]
     refresh["Refresh items and totals"]
-    checkout["Write receipt and loyalty points"]
+    checkout["Simulate checkout"]
+    persist["Persist receipt and loyalty changes"]
 
     signin --> session
     session --> subscribe
-    subscribe --> update
-    update --> refresh
+    subscribe --> staged
+    staged --> refresh
     refresh --> checkout
+    checkout --> persist
             </pre>
-            <p class="caption">Figure B2. Implemented ordering flow showing how session state, live updates, and checkout now work as one connected experience.</p>
+            <p class="caption">Figure B2. Implemented ordering workflow showing how session state, live updates, totals, and checkout now operate as one connected flow.</p>
         </article>
     </section>
 
@@ -130,89 +180,166 @@ flowchart TD
         <h2>Data Model and Schema</h2>
         <p class="theme-narrative">
             The data model had to grow with the product. Early on, the core requirement was simply to represent a user, a dining
-            session, and a tab. The implemented schema is broader because the system now preserves receipts, loyalty changes,
-            promotions, and menu structure across multiple parts of the experience.
+            session, and a tab. The implemented schema is broader because the system now carries that visit into receipts, loyalty,
+            promotions, and menu-backed ordering records used across the customer and admin views.
         </p>
 
         <article class="artifact-card compact">
             <h3>Initial model</h3>
-            <p class="figure-note">The first conceptual model stayed small enough to support a prototype without overdesigning the system.</p>
+            <p class="figure-note">The first conceptual schema stayed intentionally small so the prototype could move quickly without overdesigning the domain.</p>
             <pre class="mermaid">
-flowchart TD
-    user["User"]
-    session["Session"]
-    tab["Live tab"]
-    profile["Loyalty and promotions"]
+erDiagram
+    USER {
+        string id
+        string email
+    }
 
-    user --> session
-    session --> tab
-    user --> profile
+    SESSION {
+        string id
+        string userId
+    }
+
+    TAB {
+        string id
+        string sessionId
+    }
+
+    LOYALTY_PROFILE {
+        string userId
+        int points
+    }
+
+    PROMOTION_FEED {
+        string id
+        string targetSegment
+    }
+
+    USER ||--o{ SESSION : starts
+    SESSION ||--|| TAB : opens
+    USER ||--|| LOYALTY_PROFILE : has
+    USER }o--o{ PROMOTION_FEED : qualifies_for
             </pre>
-            <p class="caption">Figure C1. Early data model focused on the minimum relationships needed to support a personalized dining session.</p>
+            <p class="caption">Figure C1. Early data model focused on the minimum entities needed to support a personalized dining session.</p>
         </article>
 
         <article class="artifact-card compact">
             <h3>Implemented schema</h3>
-            <p class="figure-note">The final model keeps the dining visit as the center, then carries its results into longer-term customer records.</p>
+            <p class="figure-note">The final model keeps the dining visit at the center and then carries its results into longer-term customer records.</p>
             <pre class="mermaid">
-flowchart TD
-    user["User profile"]
-    visit["Session and tab"]
-    receipt["Receipt history"]
-    rewards["Loyalty and promotions"]
-    menu["Menu catalog"]
+erDiagram
+    USER {
+        string id
+        string email
+        string phone
+    }
 
-    user --> visit
-    menu --> visit
-    visit --> receipt
-    receipt --> rewards
+    SESSION {
+        string id
+        string userId
+        string status
+    }
+
+    TAB {
+        string id
+        string sessionId
+        double total
+    }
+
+    RECEIPT {
+        string receiptId
+        string sessionId
+        double total
+    }
+
+    LOYALTY_ACCOUNT {
+        string userId
+        int points
+        string tier
+    }
+
+    PROMOTION {
+        string id
+        string targetSegment
+        string discount
+    }
+
+    MENU_ITEM {
+        string id
+        string name
+        double price
+    }
+
+    USER ||--o{ SESSION : starts
+    SESSION ||--|| TAB : owns
+    SESSION ||--o| RECEIPT : closes_as
+    USER ||--o{ RECEIPT : views
+    USER ||--|| LOYALTY_ACCOUNT : has
+    USER }o--o{ PROMOTION : qualifies_for
+    MENU_ITEM }o--o{ TAB : appears_in
             </pre>
-            <p class="caption">Figure C2. Implemented schema showing how session data now feeds receipts, loyalty state, and menu-backed ordering records.</p>
+            <p class="caption">Figure C2. Implemented schema showing how session data now feeds receipts, loyalty state, promotions, and menu-backed tab records.</p>
         </article>
     </section>
 
     <section class="portfolio-theme surface">
         <h2>Testing and Revision</h2>
         <p class="theme-narrative">
-            One of the most important technical improvements in the repository is not a screen or route but the revision workflow around
-            them. The project moved from a mostly manual demo loop into a more deterministic sequence that resets state, replays orders,
-            checks out a visit, and verifies the downstream effects across the customer and admin views.
+            One of the most important technical improvements in the repository is not a screen or route but the revision workflow
+            around them. The project moved from a mostly manual demo loop into a deterministic sequence that resets state, replays
+            orders, simulates checkout, and verifies the downstream effects across history, loyalty, and admin analytics.
         </p>
 
         <article class="artifact-card compact">
             <h3>Early validation loop</h3>
-            <p class="figure-note">At first, the project was validated by starting the stack, triggering an order, and checking the UI manually.</p>
+            <p class="figure-note">At first, the project was validated by running the stack, sending an order, and checking the UI manually.</p>
             <pre class="mermaid">
 flowchart TD
-    setup["Start backend, admin, and app"]
-    simulate["Run order simulation"]
-    observe["Observe tab changes"]
-    revise["Revise and rerun"]
+    subgraph manual["Manual validation loop"]
+        setup["Start backend, admin, and app"]
+        simulate["Run order simulation"]
+        observe["Observe tab changes"]
+        adjust["Adjust code or seed data"]
+    end
 
     setup --> simulate
     simulate --> observe
-    observe --> revise
+    observe --> adjust
+    adjust --> setup
             </pre>
             <p class="caption">Figure D1. Early testing loop based on manual observation and repeated reruns.</p>
         </article>
 
         <article class="artifact-card compact">
             <h3>Revised validation loop</h3>
-            <p class="figure-note">The final workflow is stronger because it produces repeatable evidence instead of relying on a single lucky demo run.</p>
+            <p class="figure-note">The final workflow is stronger because it produces repeatable evidence instead of relying on one lucky demo run.</p>
             <pre class="mermaid">
 flowchart TD
-    reset["Reset demo state"]
-    start["Start session"]
-    orders["Replay staged orders"]
-    close["Simulate checkout"]
-    verify["Verify receipt, loyalty, and admin analytics"]
+    subgraph prep["Deterministic demo setup"]
+        reset["Reset demo state"]
+        start["Start session"]
+    end
+
+    subgraph replay["Replay and verify"]
+        orders["Replay staged orders"]
+        live["Verify live tab state"]
+        close["Simulate checkout"]
+    end
+
+    subgraph evidence["Persisted outputs"]
+        receipt["Verify receipt history"]
+        loyalty["Verify loyalty changes"]
+        admin["Verify admin analytics"]
+    end
 
     reset --> start
     start --> orders
-    orders --> close
-    close --> verify
+    orders --> live
+    live --> close
+    close --> receipt
+    close --> loyalty
+    close --> admin
             </pre>
-            <p class="caption">Figure D2. Revised testing loop showing the repeatable workflow that made the final demo and portfolio evidence much stronger.</p>
+            <p class="caption">Figure D2. Revised testing loop showing the repeatable workflow that made the demo and portfolio evidence much stronger.</p>
         </article>
     </section>
 </main>

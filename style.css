@@ -178,6 +178,11 @@
     overflow-x: auto;
 }
 
+.mermaid svg {
+    max-width: 100%;
+    height: auto;
+}
+
 .caption {
     margin: 0.8rem 0 0;
     color: var(--muted);

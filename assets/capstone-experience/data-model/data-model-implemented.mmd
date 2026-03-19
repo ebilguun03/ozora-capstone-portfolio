@@ -2,104 +2,49 @@ erDiagram
     USER {
         string id
         string email
-        string name
         string phone
-        double total_spend
-        int visit_count
-        datetime created_at
     }
 
     SESSION {
         string id
         string userId
-        string restaurantId
-        datetime startTime
-        datetime endTime
         string status
     }
 
     TAB {
         string id
         string sessionId
-        double subtotal
-        double tax
         double total
-        string status
-        datetime createdAt
-        datetime updatedAt
     }
 
-    TAB_ITEM {
-        string name
-        int quantity
-        double price
-        string status
+    RECEIPT {
+        string receiptId
+        string sessionId
+        double total
     }
 
     LOYALTY_ACCOUNT {
         string userId
         int points
         string tier
-        double earnRate
-        int lifetime_points
-    }
-
-    REWARD {
-        string id
-        string name
-        int pointsCost
-        string description
     }
 
     PROMOTION {
         string id
-        string title
-        string description
-        string discount
         string targetSegment
-        int minSpend
-        int minOrderTotal
-        datetime validUntil
-        datetime createdAt
-    }
-
-    RECEIPT {
-        string receiptId
-        string userId
-        string sessionId
-        datetime date
-        string restaurant
-        double subtotal
-        double tax
-        double total
-        int pointsEarned
-    }
-
-    RECEIPT_ITEM {
-        string name
-        int quantity
-        double price
-    }
-
-    MENU_CATEGORY {
-        string id
-        string name
+        string discount
     }
 
     MENU_ITEM {
         string id
         string name
         double price
-        string description
     }
 
     USER ||--o{ SESSION : starts
-    SESSION ||--|| TAB : opens
-    TAB ||--|{ TAB_ITEM : embeds
-    USER ||--|| LOYALTY_ACCOUNT : owns
-    LOYALTY_ACCOUNT ||--o{ REWARD : redeems_from
-    USER }o--o{ PROMOTION : segment_matches
-    USER ||--o{ RECEIPT : receives
+    SESSION ||--|| TAB : owns
     SESSION ||--o| RECEIPT : closes_as
-    RECEIPT ||--|{ RECEIPT_ITEM : stores
-    MENU_CATEGORY ||--|{ MENU_ITEM : contains
+    USER ||--o{ RECEIPT : views
+    USER ||--|| LOYALTY_ACCOUNT : has
+    USER }o--o{ PROMOTION : qualifies_for
+    MENU_ITEM }o--o{ TAB : appears_in
