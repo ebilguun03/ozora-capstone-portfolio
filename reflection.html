@@ -26,51 +26,135 @@
 
 <main class="page-shell content-page">
     <section class="content-hero surface">
-        <p class="eyebrow">Capstone Reflection</p>
-        <h1>Overall Capstone Reflection</h1>
+        <p class="eyebrow">Overall</p>
+        <h1>A quarter-long reflection on building Ozora</h1>
         <p>
-            Ozora pushed me to think beyond a single app screen and treat the project as a connected system. I ended up building a
-            SwiftUI client, an Express backend, an admin dashboard, and a set of demo scripts that made the whole experience easier to
-            explain, test, and revise. That shift from feature thinking to system thinking was one of the most important outcomes of the capstone.
+            Ozora Smart Dining Platform started as a project about improving the restaurant experience, but over the course of the
+            capstone it became a much clearer reflection of how I think, how I work, and how I have grown as a developer. Building the
+            app, the backend, the admin dashboard, the demo tooling, and finally the portfolio forced me to move beyond surface-level
+            design decisions and think more carefully about scope, systems, communication, and follow-through.
         </p>
     </section>
 
     <section class="content-section surface">
-        <h2>What I Learned About Scope</h2>
+        <h2>Why I Chose Ozora</h2>
         <p>
-            Early in the project, the obvious temptation was to keep adding restaurant features. The more valuable lesson was learning
-            how to protect the strongest story: a guest opening a session, seeing a live tab, and receiving meaningful updates during a
-            visit. Once that core experience was clear, I could add loyalty, promotions, history, and admin analytics in a way that
-            supported the main use case instead of distracting from it.
+            I chose Ozora because I wanted a capstone that felt both practical and ambitious. I was interested in building something
+            that was easy to understand as a product, but still complex enough to show real software engineering decisions. A smart
+            dining platform gave me that balance. It let me think about user experience, service flow, data, real-time updates, and
+            business-side operations all within one project. From the beginning, I was drawn to the idea of making the restaurant
+            experience feel more transparent. Waiting for an order, checking the tab, and understanding where a meal stands are all
+            familiar parts of dining out, but they are often invisible to the guest. Ozora gave me a way to build around that gap.
+        </p>
+        <p>
+            What kept the project interesting for me was that it was never just about a nice interface. Even at the idea stage, I
+            could see that the product only worked if the system underneath it made sense. That made Ozora a good fit for the capstone
+            because it pushed me to connect product thinking and technical execution instead of treating them like separate tasks.
         </p>
     </section>
 
     <section class="content-section surface">
-        <h2>What I Learned About Technical Decisions</h2>
+        <h2>From Interface Idea to System Thinking</h2>
         <p>
-            I learned that even a prototype benefits from deliberate architecture. Using JSON-backed storage kept the project lightweight,
-            but pairing that with clear routes, reusable services, and real-time events made the system feel much more complete. I also
-            saw how implementation details shape the portfolio story. Adding simulator scripts and checkout tooling did not only help
-            development; those choices created stronger evidence for testing, iteration, and system behavior.
+            At the start of the quarter, I thought about Ozora mostly in terms of interface and experience. I was thinking about what
+            the guest would see, how the ordering flow might feel, and how the app could make the dining process smoother. That was a
+            useful place to begin, but it also had limits. As soon as I started implementing the project, I had to confront the fact
+            that even a simple-looking interface depends on a lot of system behavior behind it.
+        </p>
+        <p>
+            The project changed once I started treating it as a connected system instead of a collection of screens. The live tab only
+            mattered if a session could be created, if the backend could update order state, if the client could reflect those changes,
+            and if the rest of the product still made sense around that core interaction. The admin dashboard also shifted my thinking.
+            Once I added an operational view, the project no longer felt like only a customer app. It became a platform with multiple
+            surfaces, each depending on the same underlying data and service flow. That transition from interface thinking to system
+            thinking was one of the biggest lessons of the quarter.
         </p>
     </section>
 
     <section class="content-section surface">
-        <h2>What I Learned About Communication</h2>
+        <h2>Learning to Narrow the Scope</h2>
         <p>
-            This capstone reinforced that good engineering work has to be explainable. Building the artifact package forced me to turn
-            code structure into architecture diagrams, workflow diagrams, and annotations that show how the project changed over time.
-            That process made the project easier to present because it highlighted why certain revisions mattered, not just what files changed.
+            One of the hardest parts of the capstone was learning how to narrow the scope without losing the identity of the project.
+            Early on, it was easy to imagine more features than I could realistically support. Restaurants create a lot of possible
+            directions: menu discovery, table management, notifications, payments, personalization, loyalty, analytics, staff tools,
+            and more. That was exciting, but it also made the project harder to shape. I had to decide what Ozora actually needed to
+            prove and what could remain outside the final implementation.
+        </p>
+        <p>
+            Over time, I learned to organize the scope around the strongest story the project could tell. For Ozora, that story became
+            the dining session itself: a guest signs in, opens a live tab, receives real-time order updates, sees the current total,
+            and then carries that experience into loyalty, promotions, and history. Once I committed to that center, the rest of the
+            project became easier to evaluate. Some features supported that story and stayed. Others were interesting, but did not
+            belong in the core capstone path. That process taught me that scope is not only about cutting ideas. It is about protecting
+            the strongest version of the project.
         </p>
     </section>
 
     <section class="content-section surface">
-        <h2>How I Grew</h2>
+        <h2>Building a System That Could Be Demonstrated</h2>
         <p>
-            I grew most in connecting implementation choices to user value. I did not just build screens or endpoints in isolation; I
-            had to show how each part contributed to a more transparent dining experience. I also became more aware of how supporting
-            tools, documentation, and repeatable demos affect the credibility of a project. By the end of the capstone, I was thinking
-            more like a developer who has to design, build, test, explain, and defend a complete solution.
+            Another major lesson came from the need to build a project that could be demonstrated reliably. At first, I was mainly
+            focused on getting the experience to work. Later, I realized that it also needed to be shown clearly, repeated consistently,
+            and understood quickly by someone who had not built it. That changed the way I thought about supporting tooling.
+        </p>
+        <p>
+            The simulator scripts and demo flow became much more important than I expected. Adding order simulation, checkout logic,
+            and reset behavior did more than help me test the app. Those pieces turned the project into something I could present with
+            confidence because the system could be replayed and verified instead of depending on one fragile sequence of manual steps.
+            I also saw how these supporting tools strengthened the technical story. They showed that I was not only building a product
+            surface, but also building the conditions needed to validate and explain the system. That shifted my understanding of what
+            counts as real engineering work. The tooling around a product can be just as important as the visible features inside it.
+        </p>
+    </section>
+
+    <section class="content-section surface">
+        <h2>What the Portfolio Taught Me About Communication</h2>
+        <p>
+            I learned a lot from the portfolio itself. Before I started assembling the pages, I thought of the portfolio mostly as a
+            place to present finished work. Instead, it became another part of the capstone process. Writing from different points of
+            view forced me to understand the project more clearly. The User page required me to think in terms of value and experience.
+            The Experience page required me to explain technical evolution. The reflection required me to step back and make sense of
+            what the quarter actually taught me.
+        </p>
+        <p>
+            That process showed me that communication is not separate from development. When I could not explain a design change or a
+            technical decision clearly, it usually meant I had not understood it well enough yet. Turning the codebase into diagrams,
+            captions, and narrative sections made the project feel more coherent because it forced me to connect implementation details
+            to larger reasons. In that sense, building the portfolio improved the project itself. It pushed me to be more deliberate,
+            more selective, and more aware of how my work is understood by other people.
+        </p>
+    </section>
+
+    <section class="content-section surface">
+        <h2>How I Grew as a Developer</h2>
+        <p>
+            Over the quarter, I grew most in the way I think about ownership. At the beginning, I was more focused on making progress
+            feature by feature. By the end, I was thinking more about how each piece contributed to a complete and defensible system.
+            I became more comfortable revising decisions that I might have treated as finished earlier in the process. I also became
+            more aware that good development work includes structure, testing, explanation, and repeatability, not just implementation.
+        </p>
+        <p>
+            I also learned more about my own habits. I tend to start with a broad vision, which helps me generate ideas, but I now see
+            more clearly how important it is to narrow that vision early enough that the work can stay focused. I learned that momentum
+            comes less from trying to do everything at once and more from finding the strongest path through the project and following
+            it consistently. That is probably the most valuable growth I take from this capstone. I am leaving the quarter not just
+            with a stronger portfolio piece, but with a better process for how I want to approach future projects.
+        </p>
+    </section>
+
+    <section class="content-section surface">
+        <h2>Conclusion</h2>
+        <p>
+            Ozora gave me more than a finished capstone site. It gave me a clearer picture of the kind of developer I am becoming. I
+            started with an idea that was driven mostly by interface and product interest, and I ended with a project that reflects a
+            much deeper understanding of systems, scope, supporting tools, and communication. The next step for Ozora is continued
+            refinement: strengthening the demo, polishing the experience, and thinking about what parts of the prototype would need to
+            change to move toward a more production-ready version.
+        </p>
+        <p>
+            More broadly, what comes next for me is carrying these lessons into future work. I want to keep building projects that are
+            technically grounded, but I also want to be more intentional about how I define their scope, how I support them with better
+            tooling, and how I explain them to other people. That is what this capstone helped me see most clearly.
         </p>
     </section>
 </main>
