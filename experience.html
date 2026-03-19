@@ -3,24 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Capstone Experience - Ozora Capstone Portfolio</title>
+    <title>Experience - Ozora Capstone Portfolio</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<nav>
-    <h2>Ozora Smart Dining Platform</h2>
-    <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="user.html">The User</a></li>
-        <li><a href="experience.html" aria-current="page">Capstone Experience</a></li>
-        <li><a href="bibliography.html">Annotated Bibliography</a></li>
-        <li><a href="reflection.html">Overall Capstone Reflection</a></li>
-    </ul>
-</nav>
+<header class="site-header">
+    <nav class="top-nav" aria-label="Primary">
+        <a class="brand" href="index.html">
+            <span class="brand-kicker">UW Bothell CSS Capstone</span>
+            <span class="brand-title">Ozora Smart Dining Platform</span>
+        </a>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="user.html">User</a></li>
+            <li><a href="experience.html" aria-current="page">Experience</a></li>
+            <li><a href="bibliography.html">Bibliography</a></li>
+            <li><a href="reflection.html">Overall</a></li>
+        </ul>
+    </nav>
+</header>
 
-<main class="capstone-page">
-    <section class="hero">
+<main class="page-shell capstone-page">
+    <section class="hero surface">
         <p class="eyebrow">Ozora Smart Dining Platform</p>
         <h1>Capstone Experience</h1>
         <p class="hero-copy">
@@ -36,7 +41,7 @@
     </section>
 
     <section class="overview-grid">
-        <article class="overview-card">
+        <article class="overview-card surface">
             <h2>Recommended Themes</h2>
             <ul class="clean-list">
                 <li>Architecture</li>
@@ -46,7 +51,7 @@
                 <li>Testing, feedback, and revision evidence</li>
             </ul>
         </article>
-        <article class="overview-card">
+        <article class="overview-card surface">
             <h2>Theme to Artifact Mapping</h2>
             <ul class="clean-list">
                 <li>Architecture: early concept to implemented multi-surface architecture</li>
@@ -58,7 +63,7 @@
         </article>
     </section>
 
-    <section class="theme-section">
+    <section class="theme-section surface">
         <div class="theme-header">
             <div>
                 <p class="theme-tag">Theme 1</p>
@@ -150,7 +155,7 @@ flowchart LR
 
     subgraph backend["Backend Platform"]
         express["Express routes\n/auth /session /tab /webhook /loyalty /promotions /history"]
-        socket["Socket.io rooms\nsession_<id> | user_<id>"]
+        socket["Socket.io rooms\nsession_[id] / user_[id]"]
         data["dataService.js"]
         ws["websocketService.js"]
     end
@@ -196,7 +201,7 @@ flowchart LR
         </article>
     </section>
 
-    <section class="theme-section">
+    <section class="theme-section surface">
         <div class="theme-header">
             <div>
                 <p class="theme-tag">Theme 2</p>
@@ -269,12 +274,12 @@ sequenceDiagram
     actor Diner
     participant iOS as SwiftUI iOS app
     participant API as Express API
-    participant Session as session.js
-    participant POS as simulateOrder.js / Toast webhook
-    participant WS as Socket.io room
-    participant Tab as tabs.json
-    participant Checkout as simulateCheckout.js
-    participant History as history.json + loyalty.json
+    participant Session as Session route
+    participant POS as POS simulator
+    participant WS as WebSocket room
+    participant Tab as Tab store
+    participant Checkout as Checkout script
+    participant History as Receipt and loyalty data
 
     Diner->>iOS: Sign in
     iOS->>API: POST /api/auth/login
@@ -283,7 +288,7 @@ sequenceDiagram
     iOS->>Session: POST /api/session/start
     Session->>Tab: Create empty tab
     Session-->>iOS: sessionId
-    iOS->>WS: Subscribe to session_<id>
+    iOS->>WS: Subscribe to session_[id]
     POS->>API: POST /api/webhook/toast with item states
     API->>Tab: Replace tab items and recalculate totals
     API->>WS: Emit tabUpdated
@@ -299,7 +304,7 @@ sequenceDiagram
         </article>
     </section>
 
-    <section class="theme-section">
+    <section class="theme-section surface">
         <div class="theme-header">
             <div>
                 <p class="theme-tag">Theme 3</p>
@@ -509,7 +514,7 @@ erDiagram
         </article>
     </section>
 
-    <section class="theme-section">
+    <section class="theme-section surface">
         <div class="theme-header">
             <div>
                 <p class="theme-tag">Theme 4</p>
@@ -575,11 +580,11 @@ sequenceDiagram
     actor Customer
     participant Home as HomeView
     participant Login as LoginView
-    participant API as /api/auth/login
+    participant API as Auth API
     participant Auth as AuthService
     participant Storage as AppStorage
     participant Tab as LiveTabView
-    participant Socket as session room
+    participant Socket as Session room
     participant Admin as Admin dashboard
 
     Customer->>Home: Tap Sign In
@@ -592,9 +597,9 @@ sequenceDiagram
     Auth-->>Home: authenticated state
     Customer->>Tab: Open Live Tab
     Tab->>API: POST /api/session/start
-    Tab->>Socket: subscribe to session_<id>
+    Tab->>Socket: subscribe to session_[id]
     Admin->>API: Separate unauthenticated proxy requests
-    Note over API,Admin: Prototype boundary: customer auth is mocked,\nadmin access is isolated by a different server surface
+    Note over API,Admin: Prototype boundary. Customer auth is mocked and admin access stays on a separate server surface.
             </pre>
             <p class="caption">
                 Figure D2. Implemented prototype access flow showing mocked OTP login, client-side state persistence, automatic session start, and a separate admin boundary.
@@ -602,7 +607,7 @@ sequenceDiagram
         </article>
     </section>
 
-    <section class="theme-section">
+    <section class="theme-section surface">
         <div class="theme-header">
             <div>
                 <p class="theme-tag">Theme 5</p>
@@ -682,7 +687,7 @@ flowchart LR
         </article>
     </section>
 
-    <section class="overview-card final-notes">
+    <section class="overview-card surface final-notes">
         <h2>Asset Package</h2>
         <p>
             All source diagrams are stored in <code>assets/capstone-experience/</code>. The file

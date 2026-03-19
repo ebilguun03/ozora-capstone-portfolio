@@ -12,7 +12,7 @@ flowchart LR
 
     subgraph backend["Backend Platform"]
         express["Express routes\n/auth /session /tab /webhook /loyalty /promotions /history"]
-        socket["Socket.io rooms\nsession_<id> | user_<id>"]
+        socket["Socket.io rooms\nsession_[id] / user_[id]"]
         data["dataService.js"]
         ws["websocketService.js"]
     end

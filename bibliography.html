@@ -3,24 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Annotated Bibliography - Ozora Capstone Portfolio</title>
+    <title>Bibliography - Ozora Capstone Portfolio</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<nav>
-    <h2>Ozora Smart Dining Platform</h2>
-    <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="user.html">The User</a></li>
-        <li><a href="experience.html">Capstone Experience</a></li>
-        <li><a href="bibliography.html" aria-current="page">Annotated Bibliography</a></li>
-        <li><a href="reflection.html">Overall Capstone Reflection</a></li>
-    </ul>
-</nav>
+<header class="site-header">
+    <nav class="top-nav" aria-label="Primary">
+        <a class="brand" href="index.html">
+            <span class="brand-kicker">UW Bothell CSS Capstone</span>
+            <span class="brand-title">Ozora Smart Dining Platform</span>
+        </a>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="user.html">User</a></li>
+            <li><a href="experience.html">Experience</a></li>
+            <li><a href="bibliography.html" aria-current="page">Bibliography</a></li>
+            <li><a href="reflection.html">Overall</a></li>
+        </ul>
+    </nav>
+</header>
 
-<main class="content-page">
-    <section class="content-hero">
+<main class="page-shell content-page">
+    <section class="content-hero surface">
         <p class="eyebrow">Research and Technical References</p>
         <h1>Annotated Bibliography</h1>
         <p>
@@ -31,7 +36,7 @@
         </p>
     </section>
 
-    <section class="content-section">
+    <section class="content-section surface">
         <h2>Architecture</h2>
         <p class="section-note">
             These sources supported the architectural split between the SwiftUI client, the Express backend, and the real-time update
@@ -46,7 +51,7 @@
         </ol>
     </section>
 
-    <section class="content-section">
+    <section class="content-section surface">
         <h2>UI and Ordering Flow</h2>
         <p class="section-note">
             These references shaped the mobile interface and interaction model. They were useful for organizing the app around
@@ -61,7 +66,7 @@
         </ol>
     </section>
 
-    <section class="content-section">
+    <section class="content-section surface">
         <h2>Data Model</h2>
         <p class="section-note">
             These sources informed how Ozora represented data across the backend and the SwiftUI client. They were relevant to the use
@@ -75,7 +80,7 @@
         </ol>
     </section>
 
-    <section class="content-section">
+    <section class="content-section surface">
         <h2>Authentication and Access</h2>
         <p class="section-note">
             These sources were relevant to Ozora's prototype access model, which uses a mock login flow, persisted local state, local
@@ -88,7 +93,7 @@
         </ol>
     </section>
 
-    <section class="content-section">
+    <section class="content-section surface">
         <h2>Testing and Revision</h2>
         <p class="section-note">
             These sources supported the way the final portfolio documents iteration. Mermaid made it practical to produce architecture
